@@ -1,176 +1,745 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f6f4" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#17211d" media="(prefers-color-scheme: dark)">
-  <meta name="color-scheme" content="light dark">
-  <script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-off');</script>
-  <title>Mozart Maia | Seu próximo imóvel em Recife</title>
-  <meta name="description" content="Compre ou venda seu imóvel em Recife com Mozart Maia. Corretor desde 1990, com experiência em avaliação imobiliária. Atendimento direto e orientação em cada decisão.">
-  <meta property="og:title" content="Mozart Maia | Seu próximo imóvel em Recife">
-  <meta property="og:description" content="Corretagem imobiliária com experiência, proximidade e um olhar preciso para o valor do seu imóvel.">
-  <meta property="og:type" content="website">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=3">
-  <link rel="stylesheet" href="assets/fonts.css">
-  <link rel="stylesheet" href="styles.css?v=3">
-  <link rel="stylesheet" href="film.css?v=3">
-  <link rel="preload" as="image" href="assets/roof-photo.webp" fetchpriority="high">
-  <script src="app.js?v=3" defer></script>
-  <script src="assets/vendor/gsap.min.js" defer></script>
-  <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-  <script type="module" src="film.js?v=3"></script>
-</head>
-<body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-  <header class="site-header" id="topo">
-    <a class="brand" href="#principal">
-      <span class="brand-monogram" aria-hidden="true">M</span>
-      <span class="brand-name">MOZART MAIA<small>NEGÓCIOS IMOBILIÁRIOS</small></span>
-    </a>
-    <nav class="site-nav" id="site-nav" aria-label="Menu principal">
-      <a href="#servicos">Serviços</a>
-      <a href="#sobre">Sobre Mozart</a>
-      <a href="#contato">Contato</a>
-      <button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">Reduzir movimento</button>
-    </nav>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">Menu</button>
-  </header>
-  <main id="principal">
-    <section class="cinematic" id="jornada" aria-label="Da orla de Boa Viagem ao encontro com Mozart">
-      <div class="cinematic-sticky">
-        <canvas id="city-canvas" aria-hidden="true"></canvas>
-        <div class="cinematic-shading" aria-hidden="true"></div>
-        <div class="cinematic-copy" data-scene-copy="roof">
-          <h1><span>Seu lugar.</span><span>Em Recife.</span></h1>
-          <p>Comprar ou vender um imóvel começa com uma boa conversa. Conte com a experiência de Mozart Maia.</p>
-          <a class="film-link" href="#servicos">Conhecer os serviços</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="theme-color"
+      content="#f4f6f4"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#17211d"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      document.documentElement.classList.add("js");
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches)
+        document.documentElement.classList.add("motion-off");
+    </script>
+    <title data-i18n="pageTitle">
+      Mozart Maia | Compra, venda e avaliação de imóveis em Recife
+    </title>
+    <meta
+      name="description"
+      data-i18n-content="description"
+      content="Comprar, vender ou avaliar um imóvel em Recife: converse diretamente com Mozart Maia, corretor desde 1990. CRECI-PE 6826 e CNAI 5829. Escritório no Pina."
+    />
+    <meta
+      property="og:title"
+      data-i18n-content="pageTitle"
+      content="Mozart Maia | Compra, venda e avaliação de imóveis em Recife"
+    />
+    <meta
+      property="og:description"
+      data-i18n-content="description"
+      content="Corretagem e avaliação em Recife. Atendimento direto com Mozart Maia, corretor desde 1990."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://btcsolucoes.github.io/mozart-maia-imoveis/assets/recife.webp"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4.1" />
+    <link rel="stylesheet" href="assets/fonts.css" />
+    <link rel="stylesheet" href="styles.css?v=4.1" />
+    <link rel="stylesheet" href="film.css?v=4.1" />
+    <link rel="stylesheet" href="content-motion.css?v=4.1" />
+    <link
+      rel="preload"
+      as="image"
+      href="assets/roof-photo.webp"
+      fetchpriority="high"
+    />
+    <script src="i18n.js?v=4.1" defer></script>
+    <script src="app.js?v=4.1" defer></script>
+    <script src="assets/vendor/gsap.min.js" defer></script>
+    <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+    <script type="module" src="film.js?v=4.1"></script>
+    <script src="content-motion.js?v=4.1" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo" data-i18n="skip"
+      >Pular para o conteúdo</a
+    >
+    <header class="site-header" id="topo">
+      <a class="brand" href="#principal"
+        ><span class="brand-monogram" aria-hidden="true">M</span
+        ><span class="brand-name"
+          >MOZART MAIA<small data-i18n="brand"
+            >NEGÓCIOS IMOBILIÁRIOS</small
+          ></span
+        ></a
+      >
+      <nav
+        class="site-nav"
+        id="site-nav"
+        aria-label="Menu principal"
+        data-i18n-aria-label="navigation"
+      >
+        <a href="#servicos" data-i18n="navServices">Serviços</a
+        ><a href="#sobre" data-i18n="navAbout">Sobre Mozart</a
+        ><a href="#contato" data-i18n="navContact">Contato</a
+        ><button
+          id="motion-toggle"
+          class="motion-toggle"
+          type="button"
+          aria-pressed="false"
+          data-i18n="motion"
+        >
+          Reduzir movimento
+        </button>
+      </nav>
+      <div class="header-tools">
+        <div
+          class="language-switch"
+          role="group"
+          aria-label="Idioma"
+          data-i18n-aria-label="language"
+        >
+          <button
+            type="button"
+            data-lang="pt"
+            lang="pt-BR"
+            aria-label="Português (PT)"
+            aria-pressed="true"
+            disabled
+          >
+            PT</button
+          ><button
+            type="button"
+            data-lang="en"
+            lang="en"
+            aria-label="English (EN)"
+            aria-pressed="false"
+            disabled
+          >
+            EN</button
+          ><button
+            type="button"
+            data-lang="es"
+            lang="es"
+            aria-label="Español (ES)"
+            aria-pressed="false"
+            disabled
+          >
+            ES
+          </button>
         </div>
-        <div class="cinematic-copy" data-scene-copy="descent" aria-hidden="true" inert>
-          <h2>O valor de conhecer cada detalhe.</h2>
-          <p>Corretagem e avaliação imobiliária desde 1990.</p>
-        </div>
-        <div class="cinematic-copy" data-scene-copy="welcome" aria-hidden="true" inert>
-          <h2>Mozart Maia.<br>Perto de você.</h2>
-          <p>Experiência de mercado. Atendimento de pessoa para pessoa.</p>
-        </div>
-        <div class="cinematic-copy" data-scene-copy="city" aria-hidden="true" inert>
-          <h2>Recife, por uma<br>nova perspectiva.</h2>
-        </div>
-        <div class="lift-indicator" aria-label="Andar do elevador">24</div>
-        <div class="city-facts">
-          <article class="city-fact" aria-hidden="true" inert><h3>Um olhar experiente.</h3><p>Corretagem desde 1990.<br>Conhecimento para orientar sua decisão.</p></article>
-          <article class="city-fact" aria-hidden="true" inert><h3>Um encontro no Pina.</h3><p>Empresarial JCPM, 7º andar.<br>Av. Antônio de Góes, 60, Recife.</p></article>
-        </div>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Abrir menu"
+        >
+          Menu
+        </button>
       </div>
-    </section>
-    <div id="conteudo" class="page-content">
-      <section class="services section-pad" id="servicos" aria-labelledby="services-title">
-        <div class="section-heading">
-          <h2 id="services-title">Um imóvel faz parte<br>dos seus planos.</h2>
-          <p>Orientação para comprar, vender ou conhecer o valor de um imóvel em Recife, com atenção ao seu momento.</p>
-        </div>
-        <div class="services-layout">
-          <figure class="service-image">
-            <img src="assets/recife.webp" alt="Vista aérea da praia e dos edifícios de Boa Viagem, em Recife" width="2400" height="1601" loading="lazy" sizes="(max-width: 760px) 100vw, 58vw" srcset="assets/recife-small.webp 1000w, assets/recife.webp 2400w">
-          </figure>
-          <div class="service-descriptions">
-            <article>
-              <h3>Comprar</h3>
-              <p>Uma busca orientada pela sua rotina, pelos bairros que fazem sentido e pelo que você espera do seu próximo endereço.</p>
+    </header>
+    <main id="principal">
+      <section
+        class="cinematic"
+        id="jornada"
+        aria-label="Da orla de Boa Viagem ao encontro com Mozart"
+        data-i18n-aria-label="filmLabel"
+      >
+        <div class="cinematic-sticky">
+          <canvas id="city-canvas" aria-hidden="true"></canvas>
+          <div class="cinematic-shading" aria-hidden="true"></div>
+          <div class="cinematic-copy" data-scene-copy="roof">
+            <h1>
+              <span data-i18n="heroLine1">Seu imóvel.</span
+              ><span data-i18n="heroLine2">Em boas mãos.</span>
+            </h1>
+            <p data-i18n="heroText">
+              Comprar, vender ou avaliar em Recife. Converse diretamente com
+              Mozart Maia, corretor de imóveis desde 1990.
+            </p>
+            <a class="film-link" href="#servicos" data-i18n="heroLink"
+              >Encontre o serviço para você</a
+            >
+          </div>
+          <div
+            class="cinematic-copy"
+            data-scene-copy="descent"
+            aria-hidden="true"
+            inert
+          >
+            <h2 data-i18n="descentTitle">Cada imóvel tem um contexto.</h2>
+            <p data-i18n="descentText">
+              Localização, documentação e valor de mercado fazem parte da
+              conversa.
+            </p>
+          </div>
+          <div
+            class="cinematic-copy"
+            data-scene-copy="welcome"
+            aria-hidden="true"
+            inert
+          >
+            <h2 data-i18n="welcomeTitle">Mozart Maia. Atendimento direto.</h2>
+            <p data-i18n="welcomeText">
+              Você fala com o profissional que vai conhecer o seu objetivo.
+            </p>
+          </div>
+          <div
+            class="cinematic-copy"
+            data-scene-copy="city"
+            aria-hidden="true"
+            inert
+          >
+            <h2 data-i18n="cityTitle">
+              Recife no horizonte. Seu plano em foco.
+            </h2>
+          </div>
+          <div class="lift-indicator" aria-label="Andar do elevador">24</div>
+          <div class="city-facts">
+            <article class="city-fact" aria-hidden="true" inert>
+              <h3 data-i18n="cityFact1Title">Desde 1990, em campo.</h3>
+              <p data-i18n="cityFact1Text">
+                Corretagem e avaliação imobiliária. CRECI-PE 6826 · CNAI 5829.
+              </p>
             </article>
-            <article>
-              <h3>Vender</h3>
-              <p>Leitura de mercado, orientação sobre o valor e acompanhamento da negociação, considerando as características do imóvel e os seus objetivos.</p>
-            </article>
-            <article>
-              <h3>Avaliar</h3>
-              <p>Análise do valor de mercado com pesquisa, atenção ao contexto e atuação registrada no Cadastro Nacional de Avaliadores Imobiliários.</p>
+            <article class="city-fact" aria-hidden="true" inert>
+              <h3 data-i18n="cityFact2Title">Nos encontramos no Pina.</h3>
+              <p data-i18n="cityFact2Text">
+                Empresarial JCPM, 7º andar. Av. Antônio de Góes, 60, Recife.
+              </p>
             </article>
           </div>
         </div>
       </section>
-
-      <section class="about section-pad" id="sobre" aria-labelledby="about-title">
-        <figure class="portrait-wrap">
-          <img src="assets/mozart.webp" alt="Mozart Maia, corretor de imóveis, sorrindo em seu escritório" width="500" height="500" loading="lazy">
-          <figcaption>Mozart Maia<span>Corretor de imóveis e perito avaliador</span></figcaption>
-        </figure>
-        <div class="about-copy" id="experiencia">
-          <h2 id="about-title">Experiência de mercado.<br>Uma conversa próxima.</h2>
-          <p class="about-lead">Corretor de imóveis desde 1990, Mozart acompanha cada decisão com conhecimento técnico e atenção às pessoas.</p>
-          <p>Pós-graduado em Gestão em Negócios Imobiliários, reúne experiência em corretagem e avaliação para entender o contexto, as características e o valor de cada imóvel.</p>
-          <dl class="credentials">
-            <div><dt>Registro profissional</dt><dd>CRECI-PE 6826</dd></div>
-            <div><dt>Avaliação imobiliária</dt><dd>CNAI 5829</dd></div>
-          </dl>
-          <div class="technical-note">
-            <h3>Um olhar técnico sobre o patrimônio</h3>
-            <p>Mozart também atua com perícia judicial e extrajudicial e assistência técnica imobiliária. O escopo é definido conforme cada demanda.</p>
+      <div id="conteudo" class="page-content">
+        <section
+          class="services section-pad"
+          id="servicos"
+          aria-labelledby="services-title"
+        >
+          <div class="section-heading">
+            <h2 id="services-title" data-i18n="servicesTitle">
+              O que você precisa resolver?
+            </h2>
+            <p data-i18n="servicesIntro">
+              Uma compra, uma venda e uma avaliação têm objetivos diferentes. O
+              atendimento começa entendendo o seu e reunindo as informações que
+              tornam a decisão mais clara.
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section class="process section-pad" id="como-funciona" aria-labelledby="process-title">
-        <div class="section-heading"><h2 id="process-title">Decisões bem acompanhadas.</h2></div>
-        <div class="process-list">
-          <article><h3>Entender o momento</h3><p>Uma conversa sobre suas expectativas e o que é essencial para você.</p></article>
-          <article><h3>Definir o caminho</h3><p>Orientação sobre o imóvel, o mercado e as possibilidades de negociação.</p></article>
-          <article><h3>Acompanhar a decisão</h3><p>Atendimento próximo, com atenção aos detalhes em cada etapa do negócio.</p></article>
-        </div>
-      </section>
-
-      <section class="contact section-pad" id="contato" aria-labelledby="contact-title">
-        <div class="contact-heading">
-          <h2 id="contact-title">Qual é o seu<br>próximo plano?</h2>
-          <p>Conte o que você tem em mente.<br>Mozart conversa diretamente com você.</p>
-          <div class="contact-details">
-            <a class="phone-link" href="tel:+5581999712940">(81) 99971-2940</a>
-            <a class="email-link" href="mailto:contato@mozartperitojudicial.com.br">contato@mozartperitojudicial.com.br</a>
-            <p>Segunda a sexta, das 8h às 18h.</p>
-            <address>Av. Antônio de Góes, 60, 7º andar<br>Empresarial JCPM, Pina, Recife</address>
-            <a class="location-link" href="https://www.google.com/maps/search/?api=1&query=Empresarial+JCPM+Av+Antonio+de+Goes+60+Recife" target="_blank" rel="noopener noreferrer">Ver localização</a>
-          </div>
-        </div>
-        <form id="contact-form" class="contact-form" novalidate>
-          <fieldset>
-            <legend>O que você está planejando?</legend>
-            <div class="intent-options">
-              <label><input type="radio" name="objetivo" value="comprar" checked><span>Comprar</span></label>
-              <label><input type="radio" name="objetivo" value="vender"><span>Vender</span></label>
-              <label><input type="radio" name="objetivo" value="avaliar"><span>Avaliar</span></label>
-              <label><input type="radio" name="objetivo" value="pericia"><span>Perícia</span></label>
+          <div class="services-layout">
+            <figure class="service-image">
+              <img
+                src="assets/recife.webp"
+                alt="Vista aérea da praia e dos edifícios de Boa Viagem, em Recife"
+                data-i18n-alt="coastAlt"
+                width="2400"
+                height="1601"
+                loading="lazy"
+                sizes="(max-width: 760px) 100vw, 58vw"
+                srcset="
+                  assets/recife-small.webp 1000w,
+                  assets/recife.webp       2400w
+                "
+              />
+              <figcaption>
+                <span data-i18n="coastCaption">Boa Viagem, Recife</span
+                ><span data-i18n="coastCaption2"
+                  >Uma cidade. Diferentes formas de morar.</span
+                >
+              </figcaption>
+            </figure>
+            <div class="service-descriptions">
+              <article>
+                <h3 data-i18n="buyTitle">Comprar para a sua vida.</h3>
+                <p data-i18n="buyText">
+                  A busca começa pela rotina que você quer ter. Região,
+                  orçamento e características do imóvel ajudam a estabelecer
+                  prioridades antes das visitas e da negociação.
+                </p>
+                <p class="service-prompt" data-i18n="buyPrompt">
+                  Para a primeira conversa, pense em:
+                </p>
+                <ul>
+                  <li data-i18n="buy1">Bairros e deslocamentos do dia a dia</li>
+                  <li data-i18n="buy2">
+                    Faixa de investimento e forma de pagamento
+                  </li>
+                  <li data-i18n="buy3">
+                    Espaço, vagas e o que é indispensável
+                  </li>
+                </ul>
+              </article>
+              <article>
+                <h3 data-i18n="sellTitle">Vender com contexto.</h3>
+                <p data-i18n="sellText">
+                  O preço desejado é o início da conversa. Conhecer a
+                  localização, o estado do imóvel e o mercado ajuda a discutir
+                  seu posicionamento e os próximos passos da venda.
+                </p>
+                <p class="service-prompt" data-i18n="sellPrompt">
+                  Tenha por perto, se possível:
+                </p>
+                <ul>
+                  <li data-i18n="sell1">
+                    Endereço, área e características do imóvel
+                  </li>
+                  <li data-i18n="sell2">
+                    Fotos atuais e informações de condomínio
+                  </li>
+                  <li data-i18n="sell3">
+                    Documentação disponível e seu prazo ideal
+                  </li>
+                </ul>
+              </article>
+              <article>
+                <h3 data-i18n="valueTitle">Avaliar com uma finalidade.</h3>
+                <p data-i18n="valueText">
+                  Conhecer o valor para negociar e precisar de uma avaliação
+                  formal são demandas diferentes. Informe a finalidade para
+                  definir o escopo, os documentos e os honorários com Mozart.
+                </p>
+                <p class="service-prompt" data-i18n="valuePrompt">
+                  Pode ser um ponto de partida para:
+                </p>
+                <ul>
+                  <li data-i18n="value1">Uma decisão de compra ou venda</li>
+                  <li data-i18n="value2">
+                    Organização e análise do patrimônio
+                  </li>
+                  <li data-i18n="value3">
+                    Uma demanda judicial ou extrajudicial
+                  </li>
+                </ul>
+              </article>
             </div>
-          </fieldset>
-          <label class="field" for="nome">Seu nome
-            <input id="nome" name="nome" autocomplete="given-name" placeholder="Como podemos chamar você?" maxlength="80" required aria-describedby="nome-error">
-            <span class="field-error" id="nome-error"></span>
-          </label>
-          <label class="field" for="mensagem">O que você tem em mente? <span class="optional">(opcional)</span>
-            <textarea id="mensagem" name="mensagem" rows="3" maxlength="1500" placeholder="Um bairro, um tipo de imóvel, um novo plano…"></textarea>
-          </label>
-          <p class="privacy-note">Ao continuar, o WhatsApp abrirá com sua mensagem pronta. Seus dados não são armazenados neste site.</p>
-          <button class="button submit-button" type="submit" disabled>Continuar no WhatsApp</button>
-          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-          <noscript><p class="noscript-contact"><a href="https://wa.me/5581999712940">Fale diretamente pelo WhatsApp</a>.</p></noscript>
-        </form>
-      </section>
-
-      <section class="faq section-pad" aria-labelledby="faq-title">
-        <h2 id="faq-title">Antes da conversa.</h2>
-        <div class="faq-list">
-          <details><summary>Quero vender. Por onde começar?</summary><p>Comece contando onde fica o imóvel, suas características e seu objetivo. Mozart poderá conversar sobre o cenário de mercado e os próximos passos para a venda.</p></details>
-          <details><summary>Ainda não sei qual imóvel procurar.</summary><p>Não é preciso ter tudo decidido. Compartilhe sua rotina, os bairros que considera e suas prioridades. Essa conversa ajuda a organizar a busca.</p></details>
-          <details><summary>Posso solicitar somente uma avaliação?</summary><p>Sim. A avaliação imobiliária é um serviço próprio, que pode ser solicitado independentemente de uma compra ou venda. O escopo e os honorários são definidos diretamente com Mozart.</p></details>
-          <details><summary>Onde acontece o atendimento?</summary><p>O escritório fica na Av. Antônio de Góes, 60, 7º andar, Empresarial JCPM, no Pina, Recife. Entre em contato para combinar o atendimento.</p></details>
-        </div>
-      </section>
-    </div>
-  </main>
-  <footer class="site-footer">
-    <div class="footer-signature"><span>Mozart Maia</span><span>© <span id="year">2026</span></span></div>
-    <p class="photo-credit">Foto de Recife: <a href="https://www.arne-mueseler.com/" target="_blank" rel="noopener noreferrer">Arne Müseler</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/de/deed.pt" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0 DE</a>. Recorte e sobreposição de cor. Cenários da abertura: representação artística de Boa Viagem.</p>
-  </footer>
-</body>
+          </div>
+        </section>
+        <section
+          class="about section-pad"
+          id="sobre"
+          aria-labelledby="about-title"
+        >
+          <figure class="portrait-wrap">
+            <img
+              src="assets/mozart.webp"
+              alt="Mozart Maia, corretor de imóveis, em seu escritório"
+              data-i18n-alt="portraitAlt"
+              width="500"
+              height="500"
+              loading="lazy"
+            />
+            <figcaption>
+              Mozart Maia<span data-i18n="portraitCaption"
+                >Corretor de imóveis e perito avaliador</span
+              >
+            </figcaption>
+          </figure>
+          <div class="about-copy" id="experiencia">
+            <h2 id="about-title" data-i18n="aboutTitle">
+              Quem está do outro lado da conversa.
+            </h2>
+            <p class="about-lead" data-i18n="aboutLead">
+              Mozart Maia é corretor de imóveis desde 1990 e pós-graduado em
+              Gestão em Negócios Imobiliários.
+            </p>
+            <p data-i18n="aboutText">
+              Sua trajetória reúne corretagem, avaliação e perícia imobiliária.
+              Essa experiência permite conversar tanto sobre o próximo endereço
+              quanto sobre questões técnicas relacionadas ao valor de um
+              patrimônio.
+            </p>
+            <dl class="credentials">
+              <div>
+                <dt data-i18n="credential1">Registro profissional</dt>
+                <dd>CRECI-PE 6826</dd>
+              </div>
+              <div>
+                <dt data-i18n="credential2">Avaliação imobiliária</dt>
+                <dd>CNAI 5829</dd>
+              </div>
+            </dl>
+            <div class="technical-note">
+              <h3 data-i18n="technicalNoteTitle">
+                Atuação também na área pericial
+              </h3>
+              <p data-i18n="technicalNote">
+                Membro do CONPEJ e da APJEP, Mozart atua em perícias judiciais e
+                extrajudiciais. A contratação de uma perícia ou assistência
+                técnica é tratada conforme a necessidade de cada caso.
+              </p>
+              <a
+                class="text-link"
+                href="https://www.apjep.org.br/perito/148"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="profileLink"
+                >Consultar o perfil profissional na APJEP</a
+              >
+            </div>
+          </div>
+        </section>
+        <section
+          class="technical-services section-pad"
+          aria-labelledby="technical-title"
+        >
+          <div class="section-heading">
+            <h2 id="technical-title" data-i18n="technicalTitle">
+              Quando a questão vai além da negociação.
+            </h2>
+            <p data-i18n="technicalIntro">
+              Além da corretagem, o escritório recebe demandas técnicas
+              imobiliárias. Conte a finalidade e o prazo do seu caso para
+              conversar sobre o serviço adequado.
+            </p>
+          </div>
+          <div class="technical-list">
+            <details>
+              <summary data-i18n="tech1Title">
+                Perícia e assistência técnica
+              </summary>
+              <p data-i18n="tech1Text">
+                Perícias judiciais e extrajudiciais e assistência em processos
+                que envolvem imóveis. Informe o objeto da demanda, os documentos
+                disponíveis e os prazos para definir a atuação necessária.
+              </p>
+            </details>
+            <details>
+              <summary data-i18n="tech2Title">
+                Avaliação e revisão de aluguel
+              </summary>
+              <p data-i18n="tech2Text">
+                Demandas relacionadas ao valor de imóveis e à revisão de
+                aluguel. A finalidade da análise e as características do bem
+                orientam a definição do trabalho.
+              </p>
+            </details>
+            <details>
+              <summary data-i18n="tech3Title">
+                Viabilidade e análise imobiliária
+              </summary>
+              <p data-i18n="tech3Text">
+                O escritório também apresenta serviços de estudo de viabilidade
+                e análise jurídica imobiliária. Descreva a operação pretendida
+                para esclarecer o escopo e os profissionais envolvidos.
+              </p>
+            </details>
+          </div>
+        </section>
+        <section
+          class="process section-pad"
+          id="como-funciona"
+          aria-labelledby="process-title"
+        >
+          <div class="section-heading">
+            <h2 id="process-title" data-i18n="processTitle">
+              Da primeira mensagem ao próximo passo.
+            </h2>
+          </div>
+          <div class="process-list">
+            <article>
+              <h3 data-i18n="step1Title">Conte o seu objetivo</h3>
+              <p data-i18n="step1Text">
+                Diga se quer comprar, vender, avaliar ou tratar de uma perícia.
+                Bairro, tipo de imóvel e prazo já ajudam a iniciar uma conversa
+                útil.
+              </p>
+            </article>
+            <article>
+              <h3 data-i18n="step2Title">Reúna as informações</h3>
+              <p data-i18n="step2Text">
+                Mozart conversa com você sobre o contexto e as informações
+                necessárias. Você pode começar mesmo sem ter todos os documentos
+                em mãos.
+              </p>
+            </article>
+            <article>
+              <h3 data-i18n="step3Title">Combine o atendimento</h3>
+              <p data-i18n="step3Text">
+                Os próximos passos, o escopo e as condições do serviço são
+                alinhados diretamente. O escritório fica no Pina; combine o
+                atendimento antes de ir.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section
+          class="contact section-pad"
+          id="contato"
+          aria-labelledby="contact-title"
+        >
+          <div class="contact-heading">
+            <h2 id="contact-title" data-i18n="contactTitle">
+              Vamos falar do seu imóvel?
+            </h2>
+            <p data-i18n="contactIntro">
+              Escolha o assunto e prepare sua mensagem. Se preferir, use o
+              telefone ou o e-mail para conversar diretamente com Mozart.
+            </p>
+            <div class="contact-details">
+              <a class="phone-link" href="tel:+5581999712940">(81) 99971-2940</a
+              ><a class="secondary-phone" href="tel:+5581999652940"
+                >(81) 99965-2940</a
+              ><a
+                class="email-link"
+                href="mailto:contato@mozartperitojudicial.com.br"
+                >contato@mozartperitojudicial.com.br</a
+              >
+              <p data-i18n="hours">Segunda a sexta, das 8h às 18h.</p>
+              <address>
+                <span data-i18n="address"
+                  >Av. Antônio de Góes, 60, 7º andar</span
+                ><br />Empresarial JCPM, Pina, Recife<br />CEP 51010-000
+              </address>
+              <a
+                class="location-link"
+                href="https://www.google.com/maps/search/?api=1&query=Empresarial+JCPM+Av+Antonio+de+Goes+60+Recife"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-i18n="location"
+                >Ver localização no mapa</a
+              >
+            </div>
+          </div>
+          <form id="contact-form" class="contact-form" novalidate>
+            <fieldset>
+              <legend data-i18n="formLegend">
+                Sobre o que vamos conversar?
+              </legend>
+              <div class="intent-options">
+                <label
+                  ><input
+                    type="radio"
+                    name="objetivo"
+                    value="comprar"
+                    checked
+                  /><span data-i18n="intentBuy">Comprar</span></label
+                ><label
+                  ><input type="radio" name="objetivo" value="vender" /><span
+                    data-i18n="intentSell"
+                    >Vender</span
+                  ></label
+                ><label
+                  ><input type="radio" name="objetivo" value="avaliar" /><span
+                    data-i18n="intentValue"
+                    >Avaliar</span
+                  ></label
+                ><label
+                  ><input type="radio" name="objetivo" value="pericia" /><span
+                    data-i18n="intentExpert"
+                    >Perícia</span
+                  ></label
+                >
+              </div>
+            </fieldset>
+            <label class="field" for="nome"
+              ><span data-i18n="nameLabel">Seu nome</span
+              ><input
+                id="nome"
+                name="nome"
+                autocomplete="given-name"
+                placeholder="Como podemos chamar você?"
+                data-i18n-placeholder="namePlaceholder"
+                maxlength="80"
+                required
+                aria-describedby="nome-error" /><span
+                class="field-error"
+                id="nome-error"
+              ></span></label
+            ><label class="field" for="mensagem"
+              ><span data-i18n="messageLabel">O que você tem em mente?</span>
+              <span class="optional" data-i18n="optional">(opcional)</span
+              ><textarea
+                id="mensagem"
+                name="mensagem"
+                rows="3"
+                maxlength="1500"
+                placeholder="Conte o bairro, o tipo de imóvel e seu objetivo…"
+                data-i18n-placeholder="messagePlaceholder"
+              ></textarea>
+            </label>
+            <p class="privacy-note" data-i18n="privacy">
+              O WhatsApp abrirá com a mensagem preparada. Você confere o texto
+              antes de enviar. Este site não armazena os dados do formulário.
+            </p>
+            <button
+              class="button submit-button"
+              type="submit"
+              disabled
+              data-i18n="submit"
+            >
+              Preparar mensagem no WhatsApp
+            </button>
+            <p
+              id="form-status"
+              class="form-status"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <noscript
+              ><p class="noscript-contact">
+                <a href="https://wa.me/5581999712940"
+                  >Fale diretamente pelo WhatsApp</a
+                >.
+              </p></noscript
+            >
+          </form>
+          <div class="social-contact">
+            <div>
+              <h3 data-i18n="socialTitle">Acompanhe Mozart nas redes.</h3>
+              <p data-i18n="socialText">
+                Conteúdos sobre imóveis, avaliação e atuação profissional.
+              </p>
+            </div>
+            <nav
+              class="social-links"
+              aria-label="Redes sociais de Mozart"
+              data-i18n-aria-label="socialLabel"
+            >
+              <a
+                href="https://instagram.com/mozart.peritojudicial"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><img
+                  src="assets/icons/brand-instagram.svg"
+                  width="22"
+                  height="22"
+                  alt=""
+                />Instagram</a
+              ><a
+                href="https://www.facebook.com/mozart.maia.perito.judicial?mibextid=LQQJ4d"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><img
+                  src="assets/icons/brand-facebook.svg"
+                  width="22"
+                  height="22"
+                  alt=""
+                />Facebook</a
+              ><a
+                href="https://www.linkedin.com/in/mozartnegociosimobiliarios"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><img
+                  src="assets/icons/brand-linkedin.svg"
+                  width="22"
+                  height="22"
+                  alt=""
+                />LinkedIn</a
+              ><a
+                href="https://x.com/mozartperito?s=11&amp;t=zC0QPhEzoSuFwY5K3j6iBQ"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><img
+                  src="assets/icons/brand-x.svg"
+                  width="22"
+                  height="22"
+                  alt=""
+                />X / Twitter</a
+              ><a
+                href="https://www.youtube.com/@mozartperitojudicial"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><img
+                  src="assets/icons/brand-youtube.svg"
+                  width="22"
+                  height="22"
+                  alt=""
+                />YouTube</a
+              >
+            </nav>
+          </div>
+        </section>
+        <section class="faq section-pad" aria-labelledby="faq-title">
+          <h2 id="faq-title" data-i18n="faqTitle">
+            Perguntas que já podemos esclarecer.
+          </h2>
+          <div class="faq-list">
+            <details>
+              <summary data-i18n="faq1Title">
+                Este site tem uma lista de imóveis à venda?
+              </summary>
+              <p data-i18n="faq1Text">
+                Esta página apresenta os serviços de Mozart. Para consultar
+                oportunidades e disponibilidade, informe o que procura
+                diretamente no atendimento. As imagens da cidade ilustram Recife
+                e não representam imóveis anunciados.
+              </p>
+            </details>
+            <details>
+              <summary data-i18n="faq2Title">
+                Preciso ter toda a documentação para conversar?
+              </summary>
+              <p data-i18n="faq2Text">
+                Você pode começar com as informações que já tem. Endereço, área,
+                fotos e objetivo ajudam no primeiro contato. A documentação
+                necessária será discutida conforme o serviço.
+              </p>
+            </details>
+            <details>
+              <summary data-i18n="faq3Title">
+                Posso solicitar somente uma avaliação?
+              </summary>
+              <p data-i18n="faq3Text">
+                Sim. A avaliação pode ser solicitada independentemente de uma
+                compra ou venda. Informe a finalidade: o escopo, o prazo e os
+                honorários são definidos diretamente com Mozart.
+              </p>
+            </details>
+            <details>
+              <summary data-i18n="faq4Title">
+                Enviar a mensagem já contrata um serviço?
+              </summary>
+              <p data-i18n="faq4Text">
+                Não. O formulário apenas prepara uma conversa no WhatsApp. Você
+                revisa a mensagem antes de enviá-la, e as condições de qualquer
+                serviço são combinadas diretamente com Mozart.
+              </p>
+            </details>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-signature">
+        <span>Mozart Maia</span
+        ><span>© <span id="year">2026</span> · CRECI-PE 6826</span>
+      </div>
+      <p class="photo-credit">
+        <span data-i18n="creditIntro">Foto de Recife:</span>
+        <a
+          href="https://www.arne-mueseler.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Arne Müseler</a
+        >,
+        <a
+          href="https://creativecommons.org/licenses/by-sa/3.0/de/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >CC BY-SA 3.0 DE</a
+        >.
+        <span data-i18n="creditText"
+          >Recorte e sobreposição de cor. A abertura usa cenários artísticos de
+          Boa Viagem e um personagem criado a partir do retrato de Mozart; não é
+          uma filmagem real.</span
+        >
+      </p>
+    </footer>
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/5581999712940"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Conversar com Mozart no WhatsApp"
+      data-i18n-aria-label="whatsappLabel"
+      ><img
+        src="assets/icons/brand-whatsapp.svg"
+        width="24"
+        height="24"
+        alt=""
+      /><span>WhatsApp</span></a
+    >
+  </body>
 </html>

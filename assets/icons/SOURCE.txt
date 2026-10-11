@@ -1,0 +1,2 @@
+Tabler Icons, MIT license. https://github.com/tabler/tabler-icons/tree/main/icons/outline
+Downloaded 2026-10-11. See LICENSE.txt. SVG source unchanged.

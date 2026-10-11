@@ -1,0 +1,104 @@
+/* Progressive enhancement only. Text stays fully visible in every state. */
+.cm-service-image img,
+.cm-portrait-image {
+  transform-origin: 50% 55%;
+}
+.cm-service-item h3 {
+  transition:
+    color 220ms ease,
+    transform 260ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+.cm-service-item.cm-reading h3 {
+  color: var(--accent);
+  transform: translateX(5px);
+}
+.cm-service-item:focus-within h3 {
+  transform: none;
+}
+.cm-credential-value {
+  position: relative;
+  display: inline-block;
+}
+.cm-credential-value::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(var(--cm-credential-progress, 1));
+  transform-origin: left center;
+  pointer-events: none;
+}
+.cm-process-list {
+  position: relative;
+}
+.cm-process-route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  fill: none;
+}
+.cm-route-track {
+  stroke: var(--line);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+.cm-route-progress {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  vector-effect: non-scaling-stroke;
+}
+.cm-process-step h3 {
+  transition: color 220ms ease;
+}
+.cm-process-step.cm-current h3 {
+  color: var(--accent);
+}
+.cm-contact {
+  position: relative;
+}
+.cm-contact-rule {
+  position: absolute;
+  top: 0;
+  left: var(--gutter, 24px);
+  right: var(--gutter, 24px);
+  height: 1px;
+  background: var(--accent);
+  transform-origin: left center;
+  pointer-events: none;
+}
+.motion-off .cm-service-item h3,
+.motion-off .cm-process-step h3 {
+  transition: none;
+  transform: none;
+  color: inherit;
+}
+.motion-off .cm-process-route,
+.motion-off .cm-contact-rule {
+  display: none;
+}
+.motion-off .cm-credential-value::after {
+  display: none;
+}
+@media (max-width: 760px) {
+  .cm-service-item.cm-reading h3 {
+    transform: translateX(3px);
+  }
+  .cm-service-item:focus-within h3 {
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cm-service-item h3,
+  .cm-process-step h3 {
+    transition: none;
+  }
+}

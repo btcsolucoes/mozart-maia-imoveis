@@ -49,3 +49,11 @@ html:not(.js) .lift-indicator,html:not(.js) .city-facts,html:not(.js) .motion-to
  .cinematic-copy{top:8%}.cinematic-copy h1{font-size:46px}.cinematic-copy p{margin:16px 0}
  .motion-toggle{display:none}
 }
+@media(max-width:540px){
+ .cinematic-copy h1{font-size:clamp(32px,8.8vw,46px)}
+ .cinematic-copy:not([data-scene-copy=roof]) h2{font-size:32px}
+ .cinematic-copy[data-scene-copy=welcome]{max-width:230px}
+ .city-fact h3{font-size:25px}
+ .city-facts{gap:22px}
+ .cinematic-copy[data-scene-copy=city]{top:8%}
+}

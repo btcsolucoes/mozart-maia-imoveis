@@ -44,9 +44,9 @@ function paintElevator(p) {
   const door = p < .60 ? 0 : smoother(segment(p, .60, .675));
   const walk = smooth(segment(p, .685, .785));
   const floor = Math.max(0, Math.round(24 * (1 - smoother(segment(p, .25, .56)))));
-  indicator.textContent = floor === 0 ? 'T' : String(floor).padStart(2, '0');
+  indicator.textContent = floor === 0 ? (window.MozartI18n?.language === 'en' ? 'G' : window.MozartI18n?.language === 'es' ? 'PB' : 'T') : String(floor).padStart(2, '0');
   indicator.style.transform = `translate3d(${opening.x + opening.w / 2}px,${opening.y - 25}px,0) translateX(-50%)`;
-  indicator.setAttribute('aria-label', floor === 0 ? 'Elevador no térreo' : `Elevador no andar ${floor}`);
+  indicator.setAttribute('aria-label', window.MozartI18n ? window.MozartI18n.t(floor === 0 ? 'floorGround' : 'floorNumber', { floor }) : (floor === 0 ? 'Elevador no térreo' : `Elevador no andar ${floor}`));
   if (p > .56) {
     const walking = walk > .015 && walk < .93;
     const frame = walking ? Math.floor(segment(p, .685, .779) * 12) % 6 : 7;
@@ -172,6 +172,7 @@ try {
 }
 new ResizeObserver(measure).observe(canvas);
 document.addEventListener('mozart:motionchange', syncMotion);
+document.addEventListener('mozart:languagechange', () => { render(progress); requestAnimationFrame(() => trigger?.refresh()); });
 compact.addEventListener('change', syncMotion);
 document.fonts.ready.then(() => trigger?.refresh());
 addEventListener('pagehide', event => { if (!event.persisted) trigger?.kill(); });
