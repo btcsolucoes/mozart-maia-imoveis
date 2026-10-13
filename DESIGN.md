@@ -90,7 +90,7 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.field}"
     padding: "15px 18px"
-  header-whatsapp:
+  whatsapp-float:
     backgroundColor: "{colors.accent}"
     textColor: "{colors.on-accent}"
     rounded: "{rounded.round}"
@@ -118,7 +118,7 @@ Este registro substitui a direção da revisão 5 por autorização de mudança 
 - Manrope para títulos; Source Sans 3 para leitura e controles.
 - Fotografias amplas, cantos suaves e grupos de texto abertos.
 - Movimento espacial reversível com alternativa estática completa.
-- Cabeçalho sólido, contato estável e três idiomas.
+- Cabeçalho transparente na abertura, controles flutuantes discretos e três idiomas.
 
 ## Colors
 
@@ -131,7 +131,7 @@ A paleta traduz água profunda, luz salina e verde-água; mantém a mesma identi
 
 ### Secondary
 
-- **Atlântico — paper:** fundo contínuo da página e cabeçalho opaco.
+- **Atlântico — paper:** fundo contínuo da página e do cabeçalho fora da abertura.
 - **Água iluminada — surface:** superfície de contato e estado de passagem dos controles de idioma.
 - **Enseada — field:** interior dos campos, distinguido da superfície de contato.
 
@@ -157,7 +157,7 @@ A geometria aberta de Manrope sustenta títulos amplos sem ornamentação; Sourc
 - **Headline:** título dos serviços, conforme o token headline; perfil e processo usam variações contextuais de `clamp(40px, 4.5vw, 64px)` e `clamp(40px, 4.7vw, 66px)`. O panorama usa `clamp(40px, 5.6vw, 80px)` com entrelinha 1.05.
 - **Title:** títulos de compra, venda e avaliação; no celular passam a 34px. Títulos do processo usam 26px.
 - **Body:** texto principal conforme o token body, limitado globalmente a 68ch. Introduções podem usar 20–22px; os textos de serviços têm largura de 43ch no desktop.
-- **Label:** rótulos de formulário e legenda do assunto conforme o token label; navegação usa 16px e controles de idioma 14px. Informações auxiliares usam 13–16px conforme a função.
+- **Label:** rótulos de formulário e legenda do assunto conforme o token label; navegação usa 16px e controles de idioma 11px. Informações auxiliares usam 13–16px conforme a função.
 
 **The Reading First Rule.** Preserve o corpo de leitura e a área de interação durante animações; a ênfase recai sobre enquadramento, títulos e decoração.
 
@@ -167,13 +167,15 @@ O contêiner principal tem largura máxima de 1440px, gutter fluido e respiro ve
 
 Aos 1000px, a introdução dos serviços passa a uma coluna. Aos 760px, fotografia e texto, perfil, processo e contato passam a uma coluna; a fotografia de serviços perde o posicionamento sticky e mede 440px de altura. O panorama mantém uma área de pelo menos 720px nessa faixa. O formulário conserva a ordem assunto, nome e mensagem e organiza as opções em duas colunas no celular.
 
-O cabeçalho sólido permanece sticky: 80px no desktop, 72px até 760px e 104px até 540px. A navegação colapsa em menu até 1100px. O WhatsApp ocupa seu próprio lugar no cabeçalho; até 600px vai para o canto inferior direito desse cabeçalho, com 36px visuais. Os idiomas ficam em linha própria no cabeçalho estreito. Nenhum CTA flutuante cobre o conteúdo na composição atual.
+O cabeçalho é fixo, com 72px no desktop e 64px até 700px. Durante toda a abertura, fica transparente: a marca compacta e o botão de menu ocupam cápsulas discretas nos cantos superiores. A navegação fica recolhida também no desktop durante essa sequência e recupera a disposição usual depois dela. A mudança é reversível ao rolar para cima.
 
-A abertura usa sticky nativo sob o cabeçalho, com percurso de 620svh e 640svh até 700px. A altura visual é o viewport menos o cabeçalho. Em viewport de altura até 500px, a abertura fica estática. A implementação mantém âncoras, skip link, teclado e conteúdo sem JavaScript.
+O seletor de idiomas flutua no canto inferior esquerdo em uma cápsula escura, com bandeiras SVG de Brasil, Estados Unidos e Espanha, siglas PT/EN/ES e nomes acessíveis. Cada opção mantém alvo de 44px. O WhatsApp flutua no canto inferior direito em um círculo de 52px. Os controles respeitam as áreas seguras do dispositivo; os textos da abertura e o rodapé reservam espaço inferior.
+
+A abertura usa sticky nativo em tela inteira, com percurso de 620svh e 640svh até 700px. Em viewport de altura até 500px, fica estática. A implementação mantém âncoras, skip link, teclado e conteúdo sem JavaScript.
 
 O README registra verificação em 320, 390, 600, 768, 1100 e 1440px nos três idiomas sem overflow horizontal. Este passe documental não repete essas medições; elas não substituem avaliação visual do movimento.
 
-**The Stable Contact Rule.** Preserve o espaço próprio do WhatsApp no cabeçalho, o foco visível e os alvos estáveis de formulário e navegação.
+**The Stable Contact Rule.** Preserve os cantos inferiores para idiomas e WhatsApp, o foco visível e os alvos estáveis de formulário e navegação.
 
 ## Elevation & Depth
 
@@ -203,7 +205,7 @@ Campos escuros com borda clara, texto de 18px, altura mínima de 58px e cantos f
 
 ### Navigation
 
-Marca nominativa e monograma, três âncoras, PT/EN/ES, controle de movimento e acesso direto ao WhatsApp compõem o cabeçalho. Links recebem cor de acento e sublinhado no hover. Idioma selecionado usa texto e linha inferior de acento, com `aria-pressed`. O menu móvel fecha com Escape e devolve o foco ao botão.
+Marca discreta, menu com três âncoras e controle de movimento compõem o cabeçalho. Os idiomas e o WhatsApp são flutuantes independentes. O idioma selecionado recebe um fundo mais claro e `aria-pressed`. O menu fecha com Escape e devolve o foco ao botão, tanto no celular quanto na abertura do desktop.
 
 ### Photographic windows and coastal sequence
 
@@ -227,7 +229,7 @@ O estado inicial respeita `prefers-reduced-motion`; a mudança manual emite `moz
 
 - **Do** preserve a continuidade azul, a hierarquia de Manrope e a leitura em Source Sans 3.
 - **Do** mantenha fotografia, percurso e conteúdo semanticamente disponíveis com movimento reduzido.
-- **Do** preserve o espaço do WhatsApp no cabeçalho, os alvos estáveis e o foco visível.
+- **Do** preserve os cantos inferiores para os controles flutuantes, os alvos estáveis e o foco visível.
 - **Do** mantenha a sequência chegada, porta e pessoa reversível e verifique contato dos pés em movimento.
 - **Do** preserve fontes, créditos, proveniência e destinos reais ao estender a interface.
 
@@ -236,6 +238,6 @@ O estado inicial respeita `prefers-reduced-motion`; a mudança manual emite `moz
 - **Don't** apresente a articulação 2D como filmagem ou prometa realismo total.
 - **Don't** trate a aproximação gerada como recorte de pixels idênticos da fachada principal.
 - **Don't** esconda informação essencial atrás da animação ou transforme o formulário em envio automático.
-- **Don't** replique estilos históricos de WhatsApp flutuante, paleta verde da revisão 5 ou fontes substituídas como regras atuais.
+- **Don't** replique a paleta verde da revisão 5 ou fontes substituídas como regras atuais.
 
 Não canonizado: seletores e aliases históricos ainda existentes no CSS, a diferença de borda entre o token básico e o ajuste costeiro, e limitações da articulação 2D. Não foram reparados neste passe documental; o build é a evidência, e ajustes de qualidade visual exigem revisão própria.

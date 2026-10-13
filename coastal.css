@@ -88,9 +88,54 @@ h1,h2,h3{font-weight:600;letter-spacing:-.035em}
 @media(prefers-reduced-motion:reduce){.location-visual img{transform:none!important}}
 .motion-off .location-visual img{transform:none!important}
 
-/* WhatsApp has its own header slot and never covers the page content. */
-.header-whatsapp{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--on-accent);text-decoration:none;transition:background .18s ease}
-.header-whatsapp:hover{background:var(--accent-hover)}
-.header-whatsapp img{width:24px;height:24px;filter:brightness(0)}
-.header-whatsapp span{display:none}
-@media(max-width:600px){.header-whatsapp{position:absolute;right:22px;bottom:4px;width:36px;height:36px}.header-whatsapp img{width:22px;height:22px}html:not(.js) .header-whatsapp{position:static;margin-block:12px}}
+/* Quiet, floating chrome keeps the architectural sequence edge to edge. */
+:root{--header-height:72px;--float-edge:24px}
+html{scroll-padding-bottom:100px}
+section,#conteudo,#experiencia{scroll-margin-top:0}
+.site-header,.js .site-header{position:fixed;inset:0 0 auto;height:var(--header-height);min-height:0;align-items:center;flex-wrap:nowrap;padding-inline:var(--float-edge);transition:background-color 180ms ease,border-color 180ms ease}
+.brand{gap:9px;min-height:44px}
+.brand-monogram{font-size:30px;width:28px;height:34px}
+.brand-name{font-size:13px}.brand-name small{font-size:9px}
+.header-tools{display:flex;align-items:center;margin-left:0}
+.in-journey .site-header{background:transparent;border-color:transparent}
+.in-journey .brand{padding:0 15px;border-radius:999px;background:rgba(11,34,45,.78);color:#fff}
+.in-journey .brand-monogram,.in-journey .brand-name small{display:none}
+.in-journey .brand-name{font-size:12px;letter-spacing:.12em}
+.js.in-journey .menu-toggle{display:block;margin:0;min-height:44px;padding:10px 17px;border:1px solid #ffffff30;border-radius:999px;background:rgba(11,34,45,.78);color:#fff;font-size:12px}
+.js.in-journey .site-nav{position:absolute;top:calc(var(--header-height) - 2px);left:auto;right:var(--float-edge);width:min(280px,calc(100vw - 48px));display:grid;grid-template-columns:1fr;gap:0;padding:14px 22px 22px;background:#103d54;border:1px solid var(--line);border-radius:18px;max-height:calc(100dvh - 100px);overflow-y:auto}
+.js.in-journey .site-nav:not([data-open=true]){display:none}
+.in-journey .site-nav a{font-size:16px;min-height:48px;padding:10px 0}
+.in-journey .site-nav .motion-toggle{margin-top:10px;justify-self:start}
+.floating-controls{position:relative;z-index:40}
+.language-switch{position:fixed;left:max(var(--float-edge),env(safe-area-inset-left));bottom:calc(var(--float-edge) + env(safe-area-inset-bottom));display:flex;gap:0;padding:3px;border:1px solid #ffffff30;border-radius:999px;background:rgba(11,34,45,.88);box-shadow:0 3px 16px #00000014}
+.language-switch button{display:flex;align-items:center;justify-content:center;gap:6px;min-width:64px;min-height:44px;padding:9px;border:0;border-radius:999px;color:#edf5f8;background:transparent;font-size:11px;line-height:1;font-weight:600;transition:background-color 160ms ease,color 160ms ease,transform 160ms ease}
+.language-switch button[aria-pressed=true]{color:#fff;background:#ffffff20}
+.language-switch button:hover{color:#fff;background:#ffffff30}
+.language-switch button:active{transform:scale(.96)}
+.language-switch img{width:20px;height:15px;border-radius:2px;object-fit:cover}
+.whatsapp-float{position:fixed;right:max(var(--float-edge),env(safe-area-inset-right));bottom:calc(var(--float-edge) + env(safe-area-inset-bottom));z-index:40;display:grid;place-items:center;gap:0;width:52px;height:52px;padding:0;border:1px solid #ffffff40;border-radius:50%;background:var(--accent);color:var(--on-accent);box-shadow:0 3px 16px #00000014;transition:transform 180ms ease,background-color 180ms ease}
+.whatsapp-float img{width:26px;height:26px;filter:brightness(0)}
+.whatsapp-float span{display:none}
+.whatsapp-float:hover{transform:translateY(-2px);background:var(--accent-hover)}
+.whatsapp-float:active{transform:scale(.96)}
+.cinematic-sticky,.cinematic.is-static .cinematic-sticky{top:0;height:100svh;max-height:none}
+.cinematic-copy[data-scene-copy=roof],.cinematic-copy[data-scene-copy=city]{top:max(110px,15%)}
+.city-facts{bottom:110px}
+.site-footer{padding-bottom:110px}
+@media(max-width:1100px){.header-tools{margin-left:auto}.js .menu-toggle{margin:0}.js .site-nav{top:var(--header-height)}}
+@media(max-width:700px){
+ :root{--header-height:64px;--float-edge:16px}
+ .site-header,.js .site-header{padding-inline:var(--float-edge);align-items:center}
+ .brand{min-height:44px}.brand-name{font-size:12px}.brand-name small{font-size:9px}
+ .cinematic-copy[data-scene-copy=roof],.cinematic-copy[data-scene-copy=city]{top:110px}
+ .cinematic-copy[data-scene-copy=descent],.cinematic-copy[data-scene-copy=welcome]{top:105px;bottom:auto;max-width:270px}
+ .language-switch button{min-width:58px}
+ .city-facts{bottom:104px}
+ .lift-indicator{display:none}
+}
+@media(max-height:500px){.cinematic-sticky,.cinematic.is-static .cinematic-sticky{height:570px}.cinematic-copy[data-scene-copy=roof]{top:85px}}
+@media(prefers-reduced-transparency:reduce){.in-journey .brand,.js.in-journey .menu-toggle,.language-switch{background:#103d54}}
+@media(prefers-reduced-motion:reduce){.site-header,.language-switch button,.whatsapp-float{transition:none}}
+.motion-off .site-header,.motion-off .language-switch button,.motion-off .whatsapp-float{transition:none}
+html:not(.js) .site-header{position:relative;height:auto;flex-wrap:wrap}
+@media(max-width:700px) and (max-height:700px){.cinematic-copy[data-scene-copy=welcome]{top:80px}}

@@ -52,7 +52,7 @@ function syncMotion(){
   else if(off&&oldY>top)scrollTo({top:Math.max(0,top-80),behavior:'instant'});
   if(off){render(0);return;}
   gsap.registerPlugin(ScrollTrigger);const clock={value:0};
-  scrub=gsap.to(clock,{value:1,ease:'none',onUpdate:()=>render(clock.value),scrollTrigger:{trigger:section,start:()=>`top top+=${parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height'))||80}`,end:'bottom bottom',scrub:.24,invalidateOnRefresh:true,onRefresh:t=>{measure();render(t.progress);}}});
+  scrub=gsap.to(clock,{value:1,ease:'none',onUpdate:()=>render(clock.value),scrollTrigger:{trigger:section,start:'top top',end:'bottom bottom',scrub:.24,invalidateOnRefresh:true,onRefresh:t=>{measure();render(t.progress);}}});
   trigger=scrub.scrollTrigger;trigger.refresh();
 }
 try{

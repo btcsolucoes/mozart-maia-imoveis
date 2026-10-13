@@ -8,7 +8,7 @@ A identidade usa azul oceânico, branco e verde-água, com Manrope nos títulos 
 
 A fachada e a entrada pertencem à mesma composição arquitetônica. Uma aproximação gerada com essa imagem como referência fornece mais detalhe quando ocupa todo o enquadramento. É uma troca de nível de detalhe registrada pela porta, não uma reconstrução 3D ou filmagem. A cabine possui estrutura externa, reflexos e oclusão pelos trilhos. O personagem articula uma única pose fotográfica com alpha ajustado aos pés, evitando dissolvências entre braços e rostos diferentes; o movimento continua estilizado.
 
-O conteúdo inclui fotografias com movimento de câmera, revelação do retrato, progressão das etapas de atendimento e um panorama de Recife. O acesso ao WhatsApp ocupa um espaço próprio no cabeçalho, sem cobrir o texto. Serviços, formação, registros, endereço, redes sociais e perguntas frequentes permanecem disponíveis fora da sequência animada.
+O conteúdo inclui fotografias com movimento de câmera, revelação do retrato, progressão das etapas de atendimento e um panorama de Recife. O WhatsApp flutua no canto inferior direito; PT/EN/ES ficam em uma cápsula no canto inferior esquerdo, com bandeiras de Brasil, Estados Unidos e Espanha. A abertura ocupa todo o viewport e mantém somente marca compacta e menu sobre a imagem. Ao sair da sequência, o cabeçalho recupera o fundo sólido. Serviços, formação, registros, endereço, redes sociais e perguntas frequentes permanecem disponíveis fora da sequência animada.
 
 ## Executar localmente
 
@@ -59,11 +59,11 @@ A fotografia aérea de Recife é de [Arne Müseler](https://www.arne-mueseler.co
 
 O retrato vem do site original de Mozart. O solicitante autorizou a representação estilizada baseada nessa foto. Os demais cenários e o personagem são ilustrações produzidas para o projeto, não imóveis anunciados nem filmagem real. A imagem de interior tem legenda explícita. Proveniência: `assets/coastal-v6-provenance.md`, `assets/interior-v6-provenance.md`, registros históricos e sidecars `.webp.json`; o atlas PNG contém a origem em metadados.
 
-Manrope e Source Sans 3 usam SIL Open Font License; licenças em `assets/manrope-OFL.txt` e `assets/source-sans-OFL.txt`. As licenças das fontes históricas também são preservadas. Ícones Tabler locais usam MIT (`assets/icons/LICENSE.txt`). GSAP mantém seus cabeçalhos e [termos de licença](https://gsap.com/standard-license).
+Manrope e Source Sans 3 usam SIL Open Font License; licenças em `assets/manrope-OFL.txt` e `assets/source-sans-OFL.txt`. As licenças das fontes históricas também são preservadas. Bandeiras SVG de [flag-icons](https://github.com/lipis/flag-icons) usam MIT (`assets/flags/LICENSE.txt`). Ícones Tabler locais usam MIT (`assets/icons/LICENSE.txt`). GSAP mantém seus cabeçalhos e [termos de licença](https://gsap.com/standard-license).
 
 ## Verificações da revisão 6
 
-- Larguras de 320, 390, 600, 768, 1100 e 1440px, nos três idiomas, sem overflow horizontal; WhatsApp permanece dentro do cabeçalho.
+- Larguras de 320, 390, 600, 768, 1100 e 1440px, nos três idiomas, sem overflow horizontal; controles flutuantes permanecem dentro da tela e separados entre si.
 - 25 ScrollTriggers ativos; reduzir movimento remove todos; reativar restaura 25, uma moldura de retrato e uma rota do processo.
 - Cronologia conferida: cabine chega ao térreo antes das portas; o personagem avança depois da abertura. Sequência reversível e 21 edifícios completos ao final.
 - Capturas da abertura e conteúdo em desktop 1440 × 900 e celular 390 × 844, revisadas visualmente.

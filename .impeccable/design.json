@@ -327,9 +327,9 @@
     {
       "name": "Seletor de idioma",
       "kind": "nav",
-      "description": "PT/EN/ES, com sublinhado e aria-pressed no idioma selecionado.",
-      "html": "<div class=\"ds-languages\" role=\"group\" aria-label=\"Idioma\"><button type=\"button\" aria-pressed=\"true\">PT</button><button type=\"button\" aria-pressed=\"false\">EN</button><button type=\"button\" aria-pressed=\"false\">ES</button></div>",
-      "css": ".ds-languages{display:flex;align-items:center;gap:2px}.ds-languages button{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted,#c2d9e1);min-width:38px;min-height:44px;padding:8px 6px;font:600 14px/1.6 var(--sans,\"Source Sans 3\",sans-serif);cursor:pointer}.ds-languages button[aria-pressed=true]{color:var(--accent,#b9e5d4);border-color:var(--accent,#b9e5d4)}.ds-languages button:hover{color:var(--ink,#f6fafb);background:var(--surface,#174c62)}.ds-languages button:focus-visible{outline:3px solid var(--accent,#b9e5d4);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-languages{transition:none!important;animation:none!important}}"
+      "description": "Cápsula flutuante no canto inferior esquerdo, bandeiras e siglas com aria-pressed.",
+      "html": "<div class=\"ds-languages\" role=\"group\" aria-label=\"Idioma\"><button type=\"button\" aria-label=\"Português\" aria-pressed=\"true\"><img src=\"assets/flags/br.svg\" alt=\"\" width=\"20\" height=\"15\" />PT</button><button type=\"button\" aria-label=\"English\" aria-pressed=\"false\"><img src=\"assets/flags/us.svg\" alt=\"\" width=\"20\" height=\"15\" />EN</button><button type=\"button\" aria-label=\"Español\" aria-pressed=\"false\"><img src=\"assets/flags/es.svg\" alt=\"\" width=\"20\" height=\"15\" />ES</button></div>",
+      "css": ".ds-languages{display:inline-flex;gap:0;padding:3px;background:rgba(11,34,45,.88);border:1px solid #ffffff30;border-radius:999px}.ds-languages button{display:flex;align-items:center;justify-content:center;gap:6px;min-width:64px;min-height:44px;padding:9px;border:0;border-radius:999px;color:#edf5f8;background:transparent;font:600 11px/1 var(--sans,\"Source Sans 3\",sans-serif)}.ds-languages img{width:20px;height:15px;border-radius:2px}.ds-languages button[aria-pressed=true]{background:#ffffff20}.ds-languages button:hover{background:#ffffff30}.ds-languages button:focus-visible{outline:3px solid #b9e5d4;outline-offset:5px}"
     },
     {
       "name": "Dúvida expansível",
@@ -347,7 +347,7 @@
       "Manrope para títulos; Source Sans 3 para leitura e controles.",
       "Fotografias amplas, cantos suaves e grupos de texto abertos.",
       "Movimento espacial reversível com alternativa estática completa.",
-      "Cabeçalho sólido, contato estável e três idiomas."
+      "Cabeçalho transparente durante a abertura, WhatsApp flutuante e três idiomas com bandeiras."
     ],
     "rules": [
       {
@@ -362,14 +362,14 @@
       },
       {
         "name": "The Stable Contact Rule",
-        "body": "Preserve o espaço próprio do WhatsApp no cabeçalho, o foco visível e os alvos estáveis de formulário e navegação.",
+        "body": "Preserve os cantos inferiores para idiomas e WhatsApp, o foco visível e os alvos estáveis de formulário e navegação.",
         "section": "layout"
       }
     ],
     "dos": [
       "**Do** preserve a continuidade azul, a hierarquia de Manrope e a leitura em Source Sans 3.",
       "**Do** mantenha fotografia, percurso e conteúdo semanticamente disponíveis com movimento reduzido.",
-      "**Do** preserve o espaço do WhatsApp no cabeçalho, os alvos estáveis e o foco visível.",
+      "**Do** preserve os cantos inferiores para os controles flutuantes, os alvos estáveis e o foco visível.",
       "**Do** mantenha a sequência chegada, porta e pessoa reversível e verifique contato dos pés em movimento.",
       "**Do** preserve fontes, créditos, proveniência e destinos reais ao estender a interface."
     ],
@@ -377,7 +377,7 @@
       "**Don't** apresente a articulação 2D como filmagem ou prometa realismo total.",
       "**Don't** trate a aproximação gerada como recorte de pixels idênticos da fachada principal.",
       "**Don't** esconda informação essencial atrás da animação ou transforme o formulário em envio automático.",
-      "**Don't** replique estilos históricos de WhatsApp flutuante, paleta verde da revisão 5 ou fontes substituídas como regras atuais."
+      "**Don't** replique a paleta verde da revisão 5 ou fontes substituídas como regras atuais."
     ]
   }
 }

@@ -57,7 +57,7 @@ document.addEventListener("keydown", (event) => {
     closeMenu({ returnFocus: true });
 });
 document.addEventListener("click", (event) => {
-  if (mobileViewport.matches && !event.target.closest(".site-header"))
+  if (!event.target.closest(".site-header"))
     closeMenu();
 });
 mobileViewport.addEventListener("change", () => closeMenu());
@@ -119,3 +119,12 @@ document.addEventListener("mozart:languagechange", () => {
 menuText();
 form.querySelector('button[type="submit"]').disabled = false;
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Keep the full opening free of a solid navigation bar, including reverse scroll.
+const journey = document.getElementById("jornada");
+const journeyObserver = new IntersectionObserver(([entry]) => {
+  const active = entry.isIntersecting;
+  if (root.classList.contains("in-journey") !== active) closeMenu();
+  root.classList.toggle("in-journey", active);
+}, {rootMargin: "-100px 0px 0px 0px", threshold: 0});
+journeyObserver.observe(journey);

@@ -1,0 +1,1 @@
+SVG flags from https://github.com/lipis/flag-icons (MIT). Downloaded 2026-10-13. Brazil: Portuguese; United States: English; Spain: Spanish. Language names remain accessible and visible abbreviations disambiguate the flags.

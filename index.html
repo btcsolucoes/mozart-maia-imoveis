@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#103d54" />
     <meta name="color-scheme" content="dark" />
     <script>
-      document.documentElement.classList.add("js");
+      document.documentElement.classList.add("js", "in-journey");
       if (matchMedia("(prefers-reduced-motion: reduce)").matches)
         document.documentElement.classList.add("motion-off");
     </script>
@@ -33,24 +33,24 @@
       property="og:image"
       content="https://btcsolucoes.github.io/mozart-maia-imoveis/assets/recife.webp"
     />
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=6.3" />
-    <link rel="stylesheet" href="assets/fonts.css?v=6.3" />
-    <link rel="stylesheet" href="styles.css?v=6.3" />
-    <link rel="stylesheet" href="film.css?v=6.3" />
-    <link rel="stylesheet" href="content-motion.css?v=6.3" />
-    <link rel="stylesheet" href="coastal.css?v=6.3" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=6.4" />
+    <link rel="stylesheet" href="assets/fonts.css?v=6.4" />
+    <link rel="stylesheet" href="styles.css?v=6.4" />
+    <link rel="stylesheet" href="film.css?v=6.4" />
+    <link rel="stylesheet" href="content-motion.css?v=6.4" />
+    <link rel="stylesheet" href="coastal.css?v=6.4" />
     <link
       rel="preload"
       as="image"
       href="assets/tower-coast-v6.webp"
       fetchpriority="high"
     />
-    <script src="i18n.js?v=6.3" defer></script>
-    <script src="app.js?v=6.3" defer></script>
+    <script src="i18n.js?v=6.4" defer></script>
+    <script src="app.js?v=6.4" defer></script>
     <script src="assets/vendor/gsap.min.js" defer></script>
     <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-    <script type="module" src="film.js?v=6.3"></script>
-    <script src="content-motion.js?v=6.3" defer></script>
+    <script type="module" src="film.js?v=6.4"></script>
+    <script src="content-motion.js?v=6.4" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo" data-i18n="skip"
@@ -85,6 +85,18 @@
         </button>
       </nav>
       <div class="header-tools">
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Abrir menu"
+        >
+          Menu
+        </button>
+      </div>
+    </header>
+    <div class="floating-controls">
         <div
           class="language-switch"
           role="group"
@@ -95,33 +107,33 @@
             type="button"
             data-lang="pt"
             lang="pt-BR"
-            aria-label="Português (PT)"
+            aria-label="Português (Brasil)" title="Português"
             aria-pressed="true"
             disabled
           >
-            PT</button
+            <img src="assets/flags/br.svg" width="20" height="15" alt="" /><span>PT</span></button
           ><button
             type="button"
             data-lang="en"
             lang="en"
-            aria-label="English (EN)"
+            aria-label="English" title="English"
             aria-pressed="false"
             disabled
           >
-            EN</button
+            <img src="assets/flags/us.svg" width="20" height="15" alt="" /><span>EN</span></button
           ><button
             type="button"
             data-lang="es"
             lang="es"
-            aria-label="Español (ES)"
+            aria-label="Español" title="Español"
             aria-pressed="false"
             disabled
           >
-            ES
+            <img src="assets/flags/es.svg" width="20" height="15" alt="" /><span>ES</span>
           </button>
         </div>
     <a
-      class="header-whatsapp"
+      class="whatsapp-float"
       href="https://wa.me/5581999712940"
       target="_blank"
       rel="noopener noreferrer"
@@ -135,17 +147,7 @@
       /><span>WhatsApp</span></a
     >
 
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="site-nav"
-          aria-label="Abrir menu"
-        >
-          Menu
-        </button>
-      </div>
-    </header>
+    </div>
     <main id="principal">
       <section
         class="cinematic"
