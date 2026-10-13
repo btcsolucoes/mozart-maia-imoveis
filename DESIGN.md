@@ -1,102 +1,241 @@
-# Mozart Maia: direção visual e percurso
+---
+name: Mozart Maia — Orla Atlântica
+description: Corretagem em Recife com fotografia costeira, tipografia aberta e movimento espacial.
+colors:
+  paper: "#103d54"
+  surface: "#174c62"
+  field: "#15394c"
+  ink: "#f6fafb"
+  muted: "#c2d9e1"
+  accent: "#b9e5d4"
+  accent-hover: "#d5f4e7"
+  on-accent: "#123c45"
+  line: "#3d687a"
+  field-line: "#82acbd"
+  field-border: "#80aaba"
+  error: "#ffb1a5"
+typography:
+  display:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "clamp(46px, 5.4vw, 76px)"
+    fontWeight: 600
+    lineHeight: 1.08
+    letterSpacing: "-.035em"
+  headline:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "clamp(40px, 4.9vw, 70px)"
+    fontWeight: 600
+    lineHeight: 1.08
+    letterSpacing: "-.035em"
+  title:
+    fontFamily: "Manrope, sans-serif"
+    fontSize: "clamp(29px, 3vw, 43px)"
+    fontWeight: 600
+    lineHeight: 1.12
+    letterSpacing: "-.035em"
+  body:
+    fontFamily: "Source Sans 3, sans-serif"
+    fontSize: "18px"
+    fontWeight: 400
+    lineHeight: 1.6
+  label:
+    fontFamily: "Source Sans 3, sans-serif"
+    fontSize: "17px"
+    fontWeight: 500
+    lineHeight: 1.6
+  button:
+    fontFamily: "Source Sans 3, sans-serif"
+    fontSize: "17px"
+    fontWeight: 650
+    lineHeight: 1.3
+rounded:
+  photograph: "16px"
+  field: "12px"
+  capsule: "999px"
+  round: "50%"
+spacing:
+  compact: "8px"
+  inline: "16px"
+  group: "24px"
+  columns: "48px"
+  gutter: "clamp(22px, 6vw, 92px)"
+  section: "clamp(76px, 9vw, 140px)"
+components:
+  button-primary:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    typography: "{typography.button}"
+    rounded: "{rounded.capsule}"
+    padding: "16px 24px"
+  button-primary-hover:
+    backgroundColor: "{colors.accent-hover}"
+  button-motion:
+    backgroundColor: "transparent"
+    textColor: "{colors.muted}"
+    rounded: "{rounded.capsule}"
+    padding: "10px 15px"
+  button-motion-active:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+  intent-chip:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.capsule}"
+    padding: "10px 15px"
+  intent-chip-selected:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+  field:
+    backgroundColor: "{colors.field}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.field}"
+    padding: "15px 18px"
+  header-whatsapp:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    rounded: "{rounded.round}"
+    width: "44px"
+    height: "44px"
+  contact-surface:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.ink}"
+---
 
-Leitura da revisão 5: landing page de corretagem, avaliação e serviços técnicos para compradores e proprietários em Recife, disponível em PT/EN/ES. A linguagem arquitetônica e a aparência fotográfica de Boa Viagem organizam uma única apresentação cinematográfica e um percurso de conteúdo detalhado. A revisão restaura o crescimento independente dos prédios e torna a descida do elevador visível na fachada.
+# Design System: Mozart Maia — Orla Atlântica
 
-## Critério taste
+## Overview
 
-Modo: redesign com nova linguagem visual, preservando os fatos, a marca nominativa, as referências profissionais, os campos do formulário e as âncoras existentes. O pedido do usuário autoriza mudar a paleta e simplificar a navegação.
+**Creative North Star: "Orla Atlântica"**
 
-- DESIGN_VARIANCE: 7. A abertura cinematográfica é a assinatura; o restante usa composição assimétrica, fotografia ampla e espaço entre grupos.
-- MOTION_INTENSITY: 8. A narrativa de rolagem continua no movimento próprio de cada seção: enquadramento e luz das fotografias, títulos, leitura dos serviços, retrato, credenciais, serviços técnicos, percurso do processo, contato, redes, dúvidas e rodapé. Não há loops decorativos, bloqueio da leitura ou mudanças de foco pelas animações.
-- VISUAL_DENSITY: 3. Uma apresentação, compra/venda/avaliação detalhadas, perfil, serviços técnicos, processo, contato, redes e dúvidas. Sem segunda abertura ou abas de intenção.
+A identidade aproxima o visitante da corretagem em Recife por meio da orla, da arquitetura e da presença de Mozart. Superfícies azuis contínuas, texto claro, ações verde-água e fotografias amplas criam um percurso espaçoso. A informação permanece em grupos abertos; fotografia, tipografia e divisórias organizam o conteúdo.
 
-A base é HTML, CSS e JavaScript nativos já presentes no projeto. A estética é própria, sem declarar uma biblioteca de componentes como sistema visual. Não há necessidade de migrar a aplicação estática para outro framework para este redesign.
+O movimento segue a posição da rolagem: aproximação da fachada, descida da cabine, chegada, abertura da porta, representação de Mozart e crescimento do horizonte. Nas seções seguintes, fotografias mudam de enquadramento, o retrato se revela e uma linha acompanha o processo de atendimento. Texto e contato continuam disponíveis na apresentação estática.
 
-## Auditoria e alterações
+Este registro substitui a direção da revisão 5 por autorização de mudança visual e descreve o código da revisão 6.3. A ordem efetiva das folhas é estilos básicos, abertura, movimento de conteúdo e ajustes costeiros. O contrato está em `../work/v6-direction.md`; os fatos duráveis permanecem em `PRODUCT.md`. Os tokens acima refletem o resultado dessa cascata.
 
-Antes, comprar/vender se repetia no menu, no hero posterior à animação, nas abas de serviços e no formulário. Perícia e assistência eram links diferentes para a mesma seleção. A abertura cinematográfica desembocava em um segundo hero, criando sensação de dois sites.
+**Key Characteristics:**
+- Azul oceânico contínuo com contraste claro e ações verde-água.
+- Manrope para títulos; Source Sans 3 para leitura e controles.
+- Fotografias amplas, cantos suaves e grupos de texto abertos.
+- Movimento espacial reversível com alternativa estática completa.
+- Cabeçalho sólido, contato estável e três idiomas.
 
-Agora a navegação é uma única estrutura responsiva com Serviços, Sobre Mozart e Contato, acompanhada do seletor PT/EN/ES. Compra, venda e avaliação têm textos próprios, finalidades e informações para preparar o atendimento. A escolha do objetivo acontece no formulário, que prepara a mensagem no WhatsApp. Há também um acesso fixo ao WhatsApp, reduzido a uma apresentação compacta perto do formulário. Telefones, e-mail, endereço e redes ficam na seção de contato; o rodapé contém assinatura e crédito da fotografia.
+## Colors
 
-Perícia e assistência técnica não ficam limitadas ao perfil: a seção técnica distingue peritagem/assistência, avaliação/revisão de aluguel e viabilidade/análise imobiliária. O perfil conecta a trajetória de Mozart à formação, aos registros CRECI-PE 6826 e CNAI 5829, às filiações CONPEJ/APJEP e ao perfil público na APJEP.
+A paleta traduz água profunda, luz salina e verde-água; mantém a mesma identidade nas preferências clara e escura do sistema.
 
-As âncoras `#principal`, `#topo`, `#jornada`, `#conteudo`, `#experiencia`, `#servicos`, `#sobre`, `#como-funciona` e `#contato` permanecem. URLs antigas com `?objetivo=comprar`, `vender`, `avaliar` ou `pericia` ainda selecionam o formulário; novos cliques não alteram a URL com parâmetros de intenção.
+### Primary
 
-## Cores
+- **Verde-água — accent:** ações principais, seleção, foco, progressão e ênfase de leitura; **accent-hover** clareia o estado de interação.
+- **Azul de ação — on-accent:** texto e símbolos sobre o verde-água.
 
-Tema automático, consistente em toda a página. O modo claro favorece a leitura em luz ambiente; o modo escuro respeita a preferência do sistema. Não há inversão isolada de uma seção.
+### Secondary
 
-| Token | Claro | Escuro | Função |
-| --- | --- | --- | --- |
-| `--paper` | `#F4F6F4` | `#17211D` | Superfície principal mineral |
-| `--surface` | `#E8EDE9` | `#222E27` | Agrupamento do contato |
-| `--ink` | `#20312A` | `#EEF3EE` | Texto e títulos |
-| `--muted` | `#57675E` | `#B5C5B9` | Texto secundário |
-| `--accent` | `#245B45` | `#AFD3BF` | Único acento verde e foco |
-| `--on-accent` | `#FFFFFF` | `#142B1E` | Texto dos controles ativos |
+- **Atlântico — paper:** fundo contínuo da página e cabeçalho opaco.
+- **Água iluminada — surface:** superfície de contato e estado de passagem dos controles de idioma.
+- **Enseada — field:** interior dos campos, distinguido da superfície de contato.
 
-A fotografia mantém as cores naturais de Boa Viagem. A interface não adiciona coral, azul ou dourado concorrentes. A cor semântica de erro só aparece na validação.
+### Neutral
 
-## Tipografia, forma e composição
+- **Sal — ink:** títulos, conteúdo principal e rótulos.
+- **Bruma — muted:** texto secundário, apoio, legendas e avisos de privacidade.
+- **Linha costeira — line:** divisórias e trilha do processo.
+- **Borda de controle — field-line:** chips e controles compactos. A borda dos campos usa o ajuste **field-border** da folha costeira.
+- **Erro — error:** borda e mensagem de validação; não é um acento decorativo.
 
-Outfit, hospedada localmente, identifica os títulos e a marca. Plus Jakarta Sans, também local, serve ao texto e aos controles. As licenças OFL ficam em `assets`. Títulos mantêm tracking acima de -0.04em e tamanho de no máximo 88px na folha principal. Não há mistura de famílias dentro de uma frase para decorar palavras.
+**The Continuous Coast Rule.** Preserve a continuidade azul entre navegação, conteúdo e contato; diferencie superfícies por tom e espaço.
 
-A escala de forma é explícita: fotografia com 16px de raio, campos com 8px e controles compactos em cápsula. Conteúdo informativo usa espaço e divisórias; não há conjuntos de cards idênticos. O cabeçalho é sólido para manter o contraste sobre todas as cenas.
+## Typography
 
-A primeira fotografia de conteúdo ocupa uma área ampla ao lado de comprar/vender/avaliar. O perfil associa as credenciais à pessoa. O processo é um grupo textual curto; não usa números decorativos. Dúvidas usam detalhes nativos. O menu mobile reutiliza os mesmos links do desktop.
+**Display Font:** Manrope, com fallback sans-serif. **Body Font:** Source Sans 3, com fallback sans-serif. As duas famílias são locais, com licenças SIL OFL em `assets`.
 
-## Idiomas e contato
+A geometria aberta de Manrope sustenta títulos amplos sem ornamentação; Source Sans 3 permite parágrafos, detalhes técnicos e formulários confortáveis. O texto não depende de caixas altas ou de uma segunda família dentro da mesma frase para ganhar destaque.
 
-`i18n.js` mantém traduções locais e integrais em português, inglês e espanhol, incluindo metadados, textos alternativos, rótulos acessíveis, menu, formulário e indicador de andar. Português é capturado do DOM antes de qualquer tradução. O seletor atualiza `html.lang` e `aria-pressed`, preserva rotas/âncoras e não apaga campos digitados. `mozart:languagechange` sincroniza textos dinâmicos e permite recalcular a composição após mudanças no comprimento do texto.
+### Hierarchy
 
-A única persistência é a preferência de idioma em `localStorage` (`mozart-language`), com leitura/escrita protegidas. Não há armazenamento de dados do formulário. O formulário prepara uma mensagem localizada para `5581999712940`; o visitante revisa e envia pelo WhatsApp. O botão flutuante usa o mesmo destino e se adapta visualmente quando o formulário está próximo.
+- **Display:** título da abertura, conforme o token display; na largura de até 700px usa `clamp(40px, 9.4vw, 60px)` e até 540px usa `clamp(32px, 8.8vw, 46px)`.
+- **Headline:** título dos serviços, conforme o token headline; perfil e processo usam variações contextuais de `clamp(40px, 4.5vw, 64px)` e `clamp(40px, 4.7vw, 66px)`. O panorama usa `clamp(40px, 5.6vw, 80px)` com entrelinha 1.05.
+- **Title:** títulos de compra, venda e avaliação; no celular passam a 34px. Títulos do processo usam 26px.
+- **Body:** texto principal conforme o token body, limitado globalmente a 68ch. Introduções podem usar 20–22px; os textos de serviços têm largura de 43ch no desktop.
+- **Label:** rótulos de formulário e legenda do assunto conforme o token label; navegação usa 16px e controles de idioma 14px. Informações auxiliares usam 13–16px conforme a função.
 
-Instagram, Facebook, LinkedIn, X/Twitter e YouTube usam os destinos exatos encontrados no HTML do site original, listados no README. Os ícones são SVG locais do Tabler em `assets/icons/`, com licença MIT e origem registradas na mesma pasta.
+**The Reading First Rule.** Preserve o corpo de leitura e a área de interação durante animações; a ênfase recai sobre enquadramento, títulos e decoração.
 
-## Movimento, imagens e acessibilidade
+## Layout
 
-A assinatura visual é uma única montagem cinematográfica em Canvas 2D. `film.js` reúne o enquadramento das imagens, a oclusão das portas, as poses do personagem e os textos. `elevator-scene.js` movimenta uma cabine independente pela fachada; `skyline-scene.js` revela 21 camadas de prédios. `film.css` compõe a abertura e sua versão estática. GSAP e ScrollTrigger 3.13.0 são servidos localmente em `assets/vendor`; a progressão tem uma única fonte de rolagem e o elemento visual usa `position: sticky` nativo. Three.js e WebGL não fazem parte do runtime atual.
+O contêiner principal tem largura máxima de 1440px, gutter fluido e respiro vertical definido nos tokens. Os serviços combinam fotografia e textos em proporção 1.25fr/0.75fr; o perfil usa duas colunas iguais; o processo usa três colunas; contato e formulário ocupam duas colunas sobre a superfície mais clara. O contato é uma faixa de largura total, com padding horizontal que alinha o conteúdo à área central de 1268px.
 
-`content-motion.js` e `content-motion.css` cuidam do restante do percurso. A fotografia dos serviços e o retrato ganham recorte, enquadramento e luz progressivos; títulos e serviços recebem ênfase de leitura; credenciais e divisórias são destacadas; uma rota SVG curva acompanha as etapas do processo. Contato, ícones sociais, dúvidas e assinatura do rodapé também respondem à rolagem. Os efeitos preservam o texto legível, os campos e as áreas de clique, não prendem seções e são removidos por completo quando o movimento é reduzido. A versão integrada utiliza 24 ScrollTriggers. Ao reconstruir, os triggers, a moldura do retrato e a rota anterior são limpos para impedir duplicação.
+Aos 1000px, a introdução dos serviços passa a uma coluna. Aos 760px, fotografia e texto, perfil, processo e contato passam a uma coluna; a fotografia de serviços perde o posicionamento sticky e mede 440px de altura. O panorama mantém uma área de pelo menos 720px nessa faixa. O formulário conserva a ordem assunto, nome e mensagem e organiza as opções em duas colunas no celular.
 
-O roteiro começa na vista gerada do rooftop (`assets/roof-photo.webp`) e aproxima a fachada (`assets/tower-facade-v5.webp`). Uma cabine separada (`assets/lift-cabin-v5.webp`) percorre o poço envidraçado enquanto a câmera acompanha sua posição: aceleração, passagem dos andares e desaceleração no térreo. Cabos, trilhos, reflexos e oclusão pela fachada integram a cabine ao edifício. A contagem de 24 andares deriva do mesmo progresso do deslocamento.
+O cabeçalho sólido permanece sticky: 80px no desktop, 72px até 760px e 104px até 540px. A navegação colapsa em menu até 1100px. O WhatsApp ocupa seu próprio lugar no cabeçalho; até 600px vai para o canto inferior direito desse cabeçalho, com 36px visuais. Os idiomas ficam em linha própria no cabeçalho estreito. Nenhum CTA flutuante cobre o conteúdo na composição atual.
 
-A chegada precede a transição para o hall (`assets/elevator-frames.webp`); só então as portas abrem e Mozart sai. O hall é composto inteiro antes da transição, para impedir que o interior apareça através das portas fechadas. A pessoa utiliza oito poses de aparência fotográfica, reunidas em `assets/mozart-photo-atlas.png` e geradas com referência no retrato original. A transição final chega à composição costeira (`assets/skyline-boa-viagem-v5.webp`): 21 fachadas sobem em sequência por trás das palmeiras e da avenida, mantendo as proporções dos materiais e das janelas. As informações do escritório surgem durante o crescimento. A fotografia real de Recife permanece nos serviços e como alternativa se o novo horizonte não carregar.
+A abertura usa sticky nativo sob o cabeçalho, com percurso de 620svh e 640svh até 700px. A altura visual é o viewport menos o cabeçalho. Em viewport de altura até 500px, a abertura fica estática. A implementação mantém âncoras, skip link, teclado e conteúdo sem JavaScript.
 
-Trata-se de montagem de imagens com movimento de câmera, camadas independentes, transições e sequência quadro a quadro. Não é uma filmagem real, captura de movimento ou documentação de um edifício anunciado. A substituição anterior do crescimento por uma aproximação da fotografia inteira foi revista: os prédios voltam a ter movimento independente. O atlas de oito poses é discreto e tem limites de continuidade. A direção busca aparência fotográfica, sem declarar “100% realismo”.
+O README registra verificação em 320, 390, 600, 768, 1100 e 1440px nos três idiomas sem overflow horizontal. Este passe documental não repete essas medições; elas não substituem avaliação visual do movimento.
 
-O cabeçalho contém o controle localizado de redução de movimento, com `aria-pressed`. O aplicativo aplica `.motion-off` e emite `mozart:motionchange`, incluindo `detail.reduced`. O estado inicial considera `prefers-reduced-motion`; preferência, estado efetivo e anúncio do botão permanecem sincronizados durante mudanças manuais e do sistema. A preferência de movimento não é persistida no armazenamento local.
+**The Stable Contact Rule.** Preserve o espaço próprio do WhatsApp no cabeçalho, o foco visível e os alvos estáveis de formulário e navegação.
 
-A abertura oferece a mesma apresentação principal em modo estático quando o movimento é reduzido, o JavaScript está ausente ou uma cena não carrega. Os efeitos de conteúdo também ficam estáticos nesse modo. O formulário preserva os nomes e a ordem `objetivo`, `nome`, `mensagem`; mantém validação, mensagem de recuperação, aviso de privacidade e alternativa sem JavaScript. O menu responde a Escape e mantém o foco utilizável por teclado.
+## Elevation & Depth
 
-## Origem dos materiais
+A interface usa camadas tonais e linhas, sem sombras de cards. A profundidade principal vem da fotografia, dos recortes, da escala de câmera e das oclusões da arquitetura. Sobre fotografias, gradientes escuros mantêm a leitura; a abertura organiza fotografia, sombra de leitura e texto em três planos locais. Os fatos sobre a cidade têm sombra de texto suave (`0 2px 15px rgba(14,24,20,.22)`). Essa sombra é localizada, não uma regra para todo título.
 
-Outfit e Plus Jakarta Sans são hospedadas localmente com suas licenças SIL OFL em `assets/outfit-OFL.txt` e `assets/plusjakartasans-OFL.txt`.
+Na cena, a cabine passa atrás dos trilhos e recebe reflexos. As solas da figura são localizadas pelo alpha da imagem; cada pé tem contato e elevação alternados, e sua sombra acompanha o ponto de chão e a elevação. Essa implementação continua sendo articulação de uma imagem 2D. A correção dos pés não implica, por si só, aprovação visual da caminhada.
 
-A fotografia real dos serviços, também usada como alternativa de horizonte, é de Arne Müseler, disponível em https://commons.wikimedia.org/wiki/File:Recife_aerial_view.jpg sob CC BY-SA 3.0 DE. O crédito e a licença da fotografia adaptada permanecem no rodapé e no README. Rooftop, fachada, cabine, hall, horizonte animado e poses foram gerados para o projeto; o retrato que orienta o personagem veio do site original de Mozart, com uso na geração autorizado pelo solicitante. Os registros das novas imagens estão em `assets/elevator-v5-provenance.md` e `assets/skyline-v5-provenance.md`.
+## Shapes
 
-Os SVG de redes e WhatsApp vêm do Tabler e são servidos localmente. `assets/icons/LICENSE.txt` contém a licença MIT; `assets/icons/SOURCE.txt` registra a origem.
+Fotografias e molduras têm cantos suaves definidos por photograph; campos usam field; botões de ação, movimento e assunto usam capsule. O acesso de WhatsApp é circular. Divisórias de 1px separam grupos informativos; ênfases de progresso usam linhas de 1–2px. Não existe uma biblioteca de cards informativos repetidos: os blocos são estruturados por espaço, títulos e linhas.
 
-## QA da revisão 5
+## Components
 
-O QA de integração conferiu a progressão da cabine, a chegada ao térreo antes da abertura das portas, o crescimento direto e reverso das 21 fachadas e capturas em 1440px e 390px. A redução de movimento deixou zero ScrollTriggers ativos; a reativação restaurou 24, uma única moldura do retrato e uma única rota SVG. A troca de idioma também foi exercitada durante essa reconstrução.
+### Buttons
 
-O Lighthouse mobile local da revisão 5 registrou acessibilidade 100, boas práticas 100 e SEO 100, com 59 verificações aprovadas e nenhuma reprovada. Não foram medidas novas métricas de desempenho. Os resultados são de laboratório e não descrevem a experiência de visitantes reais.
+Ação clara, sem elevação. O botão principal usa accent sobre on-accent, padding e tipografia dos tokens, altura mínima de 58px e largura total no envio. O hover clareia o fundo; o estado ativo reduz a escala a .985. O link da abertura é uma variante de 54px mínimos, padding 14px 26px e texto 18px/600; seu hover reduz a opacidade a .76. O controle de movimento é uma cápsula transparente com borda, altura mínima 44px e estado pressionado verde-água.
 
-## Histórico: QA da revisão 4 e limites de verificação
+O foco visível global usa contorno verde-água de 3px com afastamento de 5px. O estado desabilitado reduz a opacidade a .55. Esses estados são definidos além dos tokens de aparência no sidecar.
 
-Resultados do QA local da revisão integrada:
+### Chips
 
-- PT/EN/ES nas larguras de 320, 390, 768, 1100 e 1440px, sem overflow horizontal.
-- Erro de nome obrigatório e preparação de mensagens localizadas no formulário; destino `5581999712940` confirmado com a abertura interceptada, sem envio.
-- Menu mobile, Escape e comportamento de foco verificados.
-- Movimento reduzido com zero ScrollTriggers; reativação com oito triggers e uma única rota SVG do processo, sem duplicação.
-- Página funcional a 390px com JavaScript desativado.
-- Chegada ao andar zero antes da abertura das portas e da saída do personagem, com sequência e reversão confirmadas.
-- Lighthouse mobile local: acessibilidade 100, boas práticas 100 e SEO 100; 59 verificações aprovadas e nenhuma reprovada no relatório.
+As opções de assunto são radios nativos com apresentação de cápsula. A seleção usa accent e on-accent; as opções não selecionadas usam borda field-line e texto ink. O hover evidencia a borda e o foco do radio produz contorno de 3px com afastamento de 4px. A altura mínima atual é 48px.
 
-LCP e CLS não foram novamente medidos nesta rodada; métricas da revisão anterior não são atribuídas à revisão 4. A avaliação local não substitui medições de visitantes reais. Em revisões futuras, repetir a matriz de idiomas, larguras e movimento, além de verificar temas, histórico/bfcache, falhas de imagens e carregamento no caminho público do GitHub Pages.
+### Inputs / Fields
 
-As regras relativas a React, hooks e componentes de bibliotecas não se aplicam à base estática preservada. Não há logos de clientes, depoimentos, inventário de imóveis ou métricas inventadas. O movimento deve ser julgado por capturas do resultado e por sua continuidade em uso, considerando que a fonte é uma montagem de imagens e não vídeo.
+Campos escuros com borda clara, texto de 18px, altura mínima de 58px e cantos field. O foco muda a borda para accent; erros usam error e mensagem associada. O textarea pode crescer verticalmente. O formulário prepara uma mensagem localizada para o WhatsApp; não envia nem armazena os campos. As três línguas preservam o conteúdo digitado.
 
-O endereço de publicação continua https://btcsolucoes.github.io/mozart-maia-imoveis/.
+### Navigation
+
+Marca nominativa e monograma, três âncoras, PT/EN/ES, controle de movimento e acesso direto ao WhatsApp compõem o cabeçalho. Links recebem cor de acento e sublinhado no hover. Idioma selecionado usa texto e linha inferior de acento, com `aria-pressed`. O menu móvel fecha com Escape e devolve o foco ao botão.
+
+### Photographic windows and coastal sequence
+
+Fotografia de serviço, retrato e panorama organizam a página sem se tornarem cards. A cena costeira usa uma imagem principal com fachada e entrada e uma aproximação gerada a partir dela. Essa aproximação é registrada pela porta e substitui o enquadramento inteiro apenas quando seus limites contêm a câmera; ela não é um recorte de pixels idênticos. A cabine chega antes da abertura e a figura avança depois. O horizonte tem 21 edifícios com crescimento escalonado e reversível.
+
+A representação de Mozart articula uma única pose fotográfica com transparência. Não é filmagem, captura de movimento ou reconstrução 3D, nem documentação de imóvel anunciado. Os materiais e limites estão registrados em `assets/coastal-v6-provenance.md`. A fotografia real de Recife mantém crédito de Arne Müseler e licença CC BY-SA 3.0 DE; interior ilustrativo e imagens geradas mantêm identificação de origem.
+
+### Process, disclosures and social links
+
+O processo usa texto em três etapas e uma rota SVG que se adapta à posição real dos blocos. Serviços técnicos e dúvidas usam `details`/`summary` nativos, divisórias e destaque verde-água ao abrir. Os cinco links sociais presentes no HTML são Instagram, Facebook, LinkedIn, X/Twitter e YouTube; os destinos exatos estão no README. Ícones Tabler locais acompanham rótulos de texto. Somente ícones e linhas decorativas recebem movimento; o alvo do link permanece estável.
+
+### Motion and static state
+
+GSAP/ScrollTrigger local controla a abertura e o conteúdo. A abertura usa scrub .24; as fotografias usam .5–.65 e os títulos e linhas .3–.4. Não há loop decorativo contínuo nem pinning das seções de conteúdo. A desmontagem remove triggers, linhas geradas, rota e moldura antes de reconstruir. O README registra 25 triggers ativos, zero com movimento reduzido e 25 após reativar, com uma rota e uma moldura.
+
+O estado inicial respeita `prefers-reduced-motion`; a mudança manual emite `mozart:motionchange` e sincroniza `aria-pressed`. O código atual persiste apenas o idioma em `mozart-language`; a preferência de movimento é mantida na página e não gravada em armazenamento. Imagens indisponíveis, JavaScript ausente ou movimento reduzido preservam a apresentação principal estática e contato. Mensagens, rótulos e metadados acompanham PT/EN/ES.
+
+## Do's and Don'ts
+
+### Do:
+
+- **Do** preserve a continuidade azul, a hierarquia de Manrope e a leitura em Source Sans 3.
+- **Do** mantenha fotografia, percurso e conteúdo semanticamente disponíveis com movimento reduzido.
+- **Do** preserve o espaço do WhatsApp no cabeçalho, os alvos estáveis e o foco visível.
+- **Do** mantenha a sequência chegada, porta e pessoa reversível e verifique contato dos pés em movimento.
+- **Do** preserve fontes, créditos, proveniência e destinos reais ao estender a interface.
+
+### Don't:
+
+- **Don't** apresente a articulação 2D como filmagem ou prometa realismo total.
+- **Don't** trate a aproximação gerada como recorte de pixels idênticos da fachada principal.
+- **Don't** esconda informação essencial atrás da animação ou transforme o formulário em envio automático.
+- **Don't** replique estilos históricos de WhatsApp flutuante, paleta verde da revisão 5 ou fontes substituídas como regras atuais.
+
+Não canonizado: seletores e aliases históricos ainda existentes no CSS, a diferença de borda entre o token básico e o ajuste costeiro, e limitações da articulação 2D. Não foram reparados neste passe documental; o build é a evidência, e ajustes de qualidade visual exigem revisão própria.

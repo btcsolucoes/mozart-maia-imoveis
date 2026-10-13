@@ -203,6 +203,7 @@
           camera.fromTo(serviceImage,
             { scale: 1.18, xPercent: -2, yPercent: 3.5 },
             { scale: 1.10, xPercent: 2, yPercent: -3.5, duration: 1, ease: 'none' }, 0);
+          camera.fromTo(photo, {clipPath:'inset(7% 5% 7% 5% round 16px)'}, {clipPath:'inset(0% 0% 0% 0% round 16px)',duration:.32,ease:'power2.out'},0);
           camera.fromTo(wash, { xPercent: -125 }, { xPercent: 165, duration: 1, ease: 'none' }, 0);
           camera.fromTo(wash, { opacity: 0 }, { opacity: .32, duration: .42, ease: 'sine.inOut' }, 0);
           camera.to(wash, { opacity: 0, duration: .58, ease: 'sine.inOut' }, .42);
@@ -224,6 +225,13 @@
           }));
         });
 
+        const coast=document.querySelector('.location-visual img');
+        if(coast){
+          const panorama=gsap.timeline({scrollTrigger:{trigger:'.location-scene',start:'top bottom',end:'bottom top',scrub:.6,invalidateOnRefresh:true}});
+          panorama.fromTo(coast,{scale:1.22,xPercent:-3,yPercent:4},{scale:1.09,xPercent:2,yPercent:-3,duration:1,ease:'none'},0);
+          panorama.fromTo('.location-copy',{y:55},{y:-24,duration:1,ease:'none'},0);
+          track(panorama);
+        }
         const portrait = document.querySelector('.about .portrait-wrap img');
         if (portrait) {
           const frame = addPortraitFrame(portrait);

@@ -119,12 +119,3 @@ document.addEventListener("mozart:languagechange", () => {
 menuText();
 form.querySelector('button[type="submit"]').disabled = false;
 document.getElementById("year").textContent = new Date().getFullYear();
-// Direct WhatsApp access remains available, while leaving the contact form unobstructed.
-const whatsapp = document.querySelector(".whatsapp-float");
-if ("IntersectionObserver" in window) {
-  new IntersectionObserver(
-    (entries) =>
-      whatsapp.classList.toggle("near-contact", entries[0].isIntersecting),
-    { threshold: 0 },
-  ).observe(form);
-}

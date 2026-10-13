@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-13T16:57:57.561025+00:00",
+  "title": "Design System: Mozart Maia — Orla Atlântica",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "secondary",
+        "displayName": "Atlântico",
+        "tonalRamp": [
+          "oklch(0.1500 0.0623 235.42)",
+          "oklch(0.2643 0.0623 235.42)",
+          "oklch(0.3786 0.0623 235.42)",
+          "oklch(0.4929 0.0623 235.42)",
+          "oklch(0.6071 0.0623 235.42)",
+          "oklch(0.7214 0.0623 235.42)",
+          "oklch(0.8357 0.0623 235.42)",
+          "oklch(0.9500 0.0623 235.42)"
+        ]
+      },
+      "surface": {
+        "role": "secondary",
+        "displayName": "Água iluminada",
+        "tonalRamp": [
+          "oklch(0.1500 0.0658 229.67)",
+          "oklch(0.2643 0.0658 229.67)",
+          "oklch(0.3786 0.0658 229.67)",
+          "oklch(0.4929 0.0658 229.67)",
+          "oklch(0.6071 0.0658 229.67)",
+          "oklch(0.7214 0.0658 229.67)",
+          "oklch(0.8357 0.0658 229.67)",
+          "oklch(0.9500 0.0658 229.67)"
+        ]
+      },
+      "field": {
+        "role": "secondary",
+        "displayName": "Enseada",
+        "tonalRamp": [
+          "oklch(0.1500 0.0530 234.72)",
+          "oklch(0.2643 0.0530 234.72)",
+          "oklch(0.3786 0.0530 234.72)",
+          "oklch(0.4929 0.0530 234.72)",
+          "oklch(0.6071 0.0530 234.72)",
+          "oklch(0.7214 0.0530 234.72)",
+          "oklch(0.8357 0.0530 234.72)",
+          "oklch(0.9500 0.0530 234.72)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Sal",
+        "tonalRamp": [
+          "oklch(0.1500 0.0045 214.33)",
+          "oklch(0.2643 0.0045 214.33)",
+          "oklch(0.3786 0.0045 214.33)",
+          "oklch(0.4929 0.0045 214.33)",
+          "oklch(0.6071 0.0045 214.33)",
+          "oklch(0.7214 0.0045 214.33)",
+          "oklch(0.8357 0.0045 214.33)",
+          "oklch(0.9500 0.0045 214.33)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Bruma",
+        "tonalRamp": [
+          "oklch(0.1500 0.0270 220.67)",
+          "oklch(0.2643 0.0270 220.67)",
+          "oklch(0.3786 0.0270 220.67)",
+          "oklch(0.4929 0.0270 220.67)",
+          "oklch(0.6071 0.0270 220.67)",
+          "oklch(0.7214 0.0270 220.67)",
+          "oklch(0.8357 0.0270 220.67)",
+          "oklch(0.9500 0.0270 220.67)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Verde-água",
+        "tonalRamp": [
+          "oklch(0.1500 0.0513 169.63)",
+          "oklch(0.2643 0.0513 169.63)",
+          "oklch(0.3786 0.0513 169.63)",
+          "oklch(0.4929 0.0513 169.63)",
+          "oklch(0.6071 0.0513 169.63)",
+          "oklch(0.7214 0.0513 169.63)",
+          "oklch(0.8357 0.0513 169.63)",
+          "oklch(0.9500 0.0513 169.63)"
+        ]
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Verde-água claro",
+        "tonalRamp": [
+          "oklch(0.1500 0.0367 168.37)",
+          "oklch(0.2643 0.0367 168.37)",
+          "oklch(0.3786 0.0367 168.37)",
+          "oklch(0.4929 0.0367 168.37)",
+          "oklch(0.6071 0.0367 168.37)",
+          "oklch(0.7214 0.0367 168.37)",
+          "oklch(0.8357 0.0367 168.37)",
+          "oklch(0.9500 0.0367 168.37)"
+        ]
+      },
+      "on-accent": {
+        "role": "primary",
+        "displayName": "Azul de ação",
+        "tonalRamp": [
+          "oklch(0.1500 0.0480 214.53)",
+          "oklch(0.2643 0.0480 214.53)",
+          "oklch(0.3786 0.0480 214.53)",
+          "oklch(0.4929 0.0480 214.53)",
+          "oklch(0.6071 0.0480 214.53)",
+          "oklch(0.7214 0.0480 214.53)",
+          "oklch(0.8357 0.0480 214.53)",
+          "oklch(0.9500 0.0480 214.53)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Linha costeira",
+        "tonalRamp": [
+          "oklch(0.1500 0.0557 226.77)",
+          "oklch(0.2643 0.0557 226.77)",
+          "oklch(0.3786 0.0557 226.77)",
+          "oklch(0.4929 0.0557 226.77)",
+          "oklch(0.6071 0.0557 226.77)",
+          "oklch(0.7214 0.0557 226.77)",
+          "oklch(0.8357 0.0557 226.77)",
+          "oklch(0.9500 0.0557 226.77)"
+        ]
+      },
+      "field-line": {
+        "role": "neutral",
+        "displayName": "Borda de controle",
+        "tonalRamp": [
+          "oklch(0.1500 0.0515 224.76)",
+          "oklch(0.2643 0.0515 224.76)",
+          "oklch(0.3786 0.0515 224.76)",
+          "oklch(0.4929 0.0515 224.76)",
+          "oklch(0.6071 0.0515 224.76)",
+          "oklch(0.7214 0.0515 224.76)",
+          "oklch(0.8357 0.0515 224.76)",
+          "oklch(0.9500 0.0515 224.76)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Borda do campo",
+        "tonalRamp": [
+          "oklch(0.1500 0.0509 223.34)",
+          "oklch(0.2643 0.0509 223.34)",
+          "oklch(0.3786 0.0509 223.34)",
+          "oklch(0.4929 0.0509 223.34)",
+          "oklch(0.6071 0.0509 223.34)",
+          "oklch(0.7214 0.0509 223.34)",
+          "oklch(0.8357 0.0509 223.34)",
+          "oklch(0.9500 0.0509 223.34)"
+        ]
+      },
+      "error": {
+        "role": "neutral",
+        "displayName": "Erro",
+        "tonalRamp": [
+          "oklch(0.1500 0.0936 28.92)",
+          "oklch(0.2643 0.0936 28.92)",
+          "oklch(0.3786 0.0936 28.92)",
+          "oklch(0.4929 0.0936 28.92)",
+          "oklch(0.6071 0.0936 28.92)",
+          "oklch(0.7214 0.0936 28.92)",
+          "oklch(0.8357 0.0936 28.92)",
+          "oklch(0.9500 0.0936 28.92)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Abertura",
+        "purpose": "Título sobre a cena costeira."
+      },
+      "headline": {
+        "displayName": "Título de seção",
+        "purpose": "Hierarquia ampla; serviços como referência."
+      },
+      "title": {
+        "displayName": "Serviço",
+        "purpose": "Compra, venda e avaliação."
+      },
+      "body": {
+        "displayName": "Leitura",
+        "purpose": "Parágrafos e informações de atendimento."
+      },
+      "label": {
+        "displayName": "Rótulo",
+        "purpose": "Campos e legenda do assunto."
+      },
+      "button": {
+        "displayName": "Ação",
+        "purpose": "Botão principal do formulário."
+      }
+    },
+    "shadows": [
+      {
+        "name": "city-fact-text",
+        "value": "0 2px 15px rgba(14,24,20,.22)",
+        "purpose": "Sombra de texto localizada sobre fotografia; não é sombra de card."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.2,.8,.2,1)",
+        "purpose": "Resposta do botão principal."
+      },
+      {
+        "name": "control-transition",
+        "value": "160ms",
+        "purpose": "Cores e estados de controles."
+      },
+      {
+        "name": "film-scrub",
+        "value": ".24",
+        "purpose": "Suavização da progressão de rolagem da abertura."
+      },
+      {
+        "name": "photo-scrub",
+        "value": ".5–.65",
+        "purpose": "Retrato, panorama e fotografia dos serviços."
+      },
+      {
+        "name": "reading-scrub",
+        "value": ".3–.4",
+        "purpose": "Títulos, linhas e percurso de atendimento."
+      },
+      {
+        "name": "disclosure-open",
+        "value": "220ms cubic-bezier(.23,1,.32,1)",
+        "purpose": "Entrada de texto ao abrir detalhes por ponteiro; sem movimento na interação por teclado."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "menu",
+        "value": "1100px"
+      },
+      {
+        "name": "header-spacing",
+        "value": "1050px"
+      },
+      {
+        "name": "service-intro",
+        "value": "1000px"
+      },
+      {
+        "name": "single-column",
+        "value": "760px"
+      },
+      {
+        "name": "film-mobile",
+        "value": "700px"
+      },
+      {
+        "name": "whatsapp-lower-slot",
+        "value": "600px"
+      },
+      {
+        "name": "header-two-rows",
+        "value": "540px"
+      },
+      {
+        "name": "narrow",
+        "value": "360px"
+      },
+      {
+        "name": "static-short-viewport",
+        "value": "(max-height: 500px)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botão principal",
+      "kind": "button",
+      "description": "Ação do formulário; aparência e estados da revisão 6.3.",
+      "html": "<button class=\"ds-button\" type=\"button\">Preparar mensagem no WhatsApp</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;justify-content:center;min-height:58px;padding:16px 24px;background:var(--accent,#b9e5d4);color:var(--on-accent,#123c45);border:0;border-radius:999px;font:650 17px/1.3 var(--sans,\"Source Sans 3\",sans-serif);text-align:center;cursor:pointer;transition:background 160ms,transform 160ms var(--ease,cubic-bezier(.2,.8,.2,1))}.ds-button:hover:not(:disabled){background:var(--accent-hover,#d5f4e7)}.ds-button:focus-visible{outline:3px solid var(--accent,#b9e5d4);outline-offset:5px}.ds-button:active:not(:disabled){transform:scale(.985)}.ds-button:disabled{opacity:.55;cursor:not-allowed}@media(prefers-reduced-motion:reduce){.ds-button{transition:none!important;animation:none!important}}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Contato da abertura",
+      "kind": "button",
+      "description": "Link em cápsula sobre a cena costeira.",
+      "html": "<a class=\"ds-film-link\" href=\"#contato\">Converse com Mozart</a>",
+      "css": ".ds-film-link{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 26px;background:#b9e5d4;color:#123c45;border-radius:999px;font:600 18px/1.6 var(--sans,\"Source Sans 3\",sans-serif);text-decoration:none;transition:background .2s ease,transform .2s ease}.ds-film-link:hover{opacity:.76}.ds-film-link:focus-visible{outline:3px solid var(--accent,#b9e5d4);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-film-link{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Controle de movimento",
+      "kind": "button",
+      "description": "Cápsula de alternância; aria-pressed anuncia o estado.",
+      "html": "<button class=\"ds-motion\" type=\"button\" aria-pressed=\"false\">Reduzir movimento</button>",
+      "css": ".ds-motion{min-height:44px;padding:10px 15px;border:1px solid var(--line,#3d687a);border-radius:999px;background:transparent;color:var(--muted,#c2d9e1);font:500 12px/1.6 var(--sans,\"Source Sans 3\",sans-serif);cursor:pointer;transition:color 160ms,background 160ms,border-color 160ms}.ds-motion:hover{color:var(--ink,#f6fafb);border-color:var(--field-line,#82acbd)}.ds-motion[aria-pressed=true]{background:var(--accent,#b9e5d4);border-color:var(--accent,#b9e5d4);color:var(--on-accent,#123c45)}.ds-motion:focus-visible{outline:3px solid var(--accent,#b9e5d4);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-motion{transition:none!important;animation:none!important}}",
+      "refersTo": "button-motion"
+    },
+    {
+      "name": "Campo de nome",
+      "kind": "input",
+      "description": "Campo escuro, rótulo claro, foco e erro associados.",
+      "html": "<label class=\"ds-field\">Seu nome<input type=\"text\" autocomplete=\"name\" placeholder=\"Como podemos chamar você?\" /></label>",
+      "css": ".ds-field{display:block;color:var(--ink,#f6fafb);font:500 17px/1.6 var(--sans,\"Source Sans 3\",sans-serif);margin-bottom:23px}.ds-field input{display:block;width:100%;margin-top:10px;padding:15px 18px;min-height:58px;border:1px solid #80aaba;border-radius:12px;background:var(--field,#15394c);color:var(--ink,#f6fafb);font:400 18px/1.6 var(--sans,\"Source Sans 3\",sans-serif);caret-color:var(--accent,#b9e5d4);transition:border-color 160ms}.ds-field input::placeholder{color:var(--muted,#c2d9e1);opacity:1}.ds-field input:focus{border-color:var(--accent,#b9e5d4)}.ds-field input:focus-visible{outline:3px solid var(--accent,#b9e5d4);outline-offset:5px}.ds-field input[aria-invalid=true]{border-color:var(--error,#ffb1a5)}@media(prefers-reduced-motion:reduce){.ds-field{transition:none!important;animation:none!important}}",
+      "refersTo": "field"
+    },
+    {
+      "name": "Assuntos de contato",
+      "kind": "chip",
+      "description": "Radio nativo em cápsula; seleção mantém texto e fundo contrastantes.",
+      "html": "<div class=\"ds-intents\"><label class=\"ds-intent\"><input type=\"radio\" name=\"ds-intent\" checked /><span>Comprar</span></label><label class=\"ds-intent\"><input type=\"radio\" name=\"ds-intent\" /><span>Vender</span></label></div>",
+      "css": ".ds-intents{display:flex;flex-wrap:wrap;gap:8px}.ds-intent{position:relative;cursor:pointer}.ds-intent input{position:absolute;inset:0;margin:0;width:100%;height:100%;opacity:0;cursor:pointer}.ds-intent span{display:block;padding:10px 15px;min-height:48px;border:1px solid var(--field-line,#82acbd);border-radius:999px;color:var(--ink,#f6fafb);font:400 16px/1.6 var(--sans,\"Source Sans 3\",sans-serif);text-align:center;transition:background 160ms,border-color 160ms,color 160ms}.ds-intent input:checked+span{background:var(--accent,#b9e5d4);border-color:var(--accent,#b9e5d4);color:var(--on-accent,#123c45)}.ds-intent input:hover+span{border-color:var(--accent,#b9e5d4)}.ds-intent input:focus-visible+span{outline:3px solid var(--accent,#b9e5d4);outline-offset:4px}@media(prefers-reduced-motion:reduce){.ds-intent,.ds-intents{transition:none!important;animation:none!important}}",
+      "refersTo": "intent-chip"
+    },
+    {
+      "name": "Navegação de seções",
+      "kind": "nav",
+      "description": "Três destinos textuais; o menu móvel reutiliza esses links.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navegação principal\"><a href=\"#servicos\">Serviços</a><a href=\"#sobre\">Sobre Mozart</a><a href=\"#contato\">Contato</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(20px,2.5vw,36px);background:var(--paper,#103d54);color:var(--ink,#f6fafb)}.ds-nav a{display:inline-flex;align-items:center;min-height:44px;color:inherit;font:500 16px/1.6 var(--sans,\"Source Sans 3\",sans-serif);text-decoration:none;white-space:nowrap}.ds-nav a:hover{color:var(--accent,#b9e5d4);text-decoration:underline;text-underline-offset:.25em}.ds-nav a:focus-visible{outline:3px solid var(--accent,#b9e5d4);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-nav{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Seletor de idioma",
+      "kind": "nav",
+      "description": "PT/EN/ES, com sublinhado e aria-pressed no idioma selecionado.",
+      "html": "<div class=\"ds-languages\" role=\"group\" aria-label=\"Idioma\"><button type=\"button\" aria-pressed=\"true\">PT</button><button type=\"button\" aria-pressed=\"false\">EN</button><button type=\"button\" aria-pressed=\"false\">ES</button></div>",
+      "css": ".ds-languages{display:flex;align-items:center;gap:2px}.ds-languages button{border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted,#c2d9e1);min-width:38px;min-height:44px;padding:8px 6px;font:600 14px/1.6 var(--sans,\"Source Sans 3\",sans-serif);cursor:pointer}.ds-languages button[aria-pressed=true]{color:var(--accent,#b9e5d4);border-color:var(--accent,#b9e5d4)}.ds-languages button:hover{color:var(--ink,#f6fafb);background:var(--surface,#174c62)}.ds-languages button:focus-visible{outline:3px solid var(--accent,#b9e5d4);outline-offset:5px}@media(prefers-reduced-motion:reduce){.ds-languages{transition:none!important;animation:none!important}}"
+    },
+    {
+      "name": "Dúvida expansível",
+      "kind": "custom",
+      "description": "Details nativo com divisória e marcador de acento.",
+      "html": "<details class=\"ds-faq\"><summary>Como começo uma conversa?</summary><p>Escolha o assunto e prepare sua mensagem no WhatsApp.</p></details>",
+      "css": ".ds-faq{border-bottom:1px solid var(--line,#3d687a);color:var(--ink,#f6fafb);font-family:var(--sans,\"Source Sans 3\",sans-serif)}.ds-faq summary{padding:23px 4px 23px 0;font-size:20px;font-weight:500;line-height:1.6;cursor:pointer;transition:color 180ms ease}.ds-faq summary::marker{color:var(--accent,#b9e5d4)}.ds-faq summary:hover,.ds-faq[open] summary{color:var(--accent,#b9e5d4)}.ds-faq summary:focus-visible{outline:3px solid var(--accent,#b9e5d4);outline-offset:5px}.ds-faq p{padding:0 24px 26px 0;margin:0;color:var(--muted,#c2d9e1);font-size:18px;line-height:1.6;max-width:66ch}@media(prefers-reduced-motion:reduce){.ds-faq{transition:none!important;animation:none!important}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Orla Atlântica",
+    "overview": "A identidade aproxima o visitante da corretagem em Recife por meio da orla, da arquitetura e da presença de Mozart. Superfícies azuis contínuas, texto claro, ações verde-água e fotografias amplas criam um percurso espaçoso. A informação permanece em grupos abertos; fotografia, tipografia e divisórias organizam o conteúdo.\n\nO movimento segue a posição da rolagem: aproximação da fachada, descida da cabine, chegada, abertura da porta, representação de Mozart e crescimento do horizonte. Nas seções seguintes, fotografias mudam de enquadramento, o retrato se revela e uma linha acompanha o processo de atendimento. Texto e contato continuam disponíveis na apresentação estática.",
+    "keyCharacteristics": [
+      "Azul oceânico contínuo com contraste claro e ações verde-água.",
+      "Manrope para títulos; Source Sans 3 para leitura e controles.",
+      "Fotografias amplas, cantos suaves e grupos de texto abertos.",
+      "Movimento espacial reversível com alternativa estática completa.",
+      "Cabeçalho sólido, contato estável e três idiomas."
+    ],
+    "rules": [
+      {
+        "name": "The Continuous Coast Rule",
+        "body": "Preserve a continuidade azul entre navegação, conteúdo e contato; diferencie superfícies por tom e espaço.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading First Rule",
+        "body": "Preserve o corpo de leitura e a área de interação durante animações; a ênfase recai sobre enquadramento, títulos e decoração.",
+        "section": "typography"
+      },
+      {
+        "name": "The Stable Contact Rule",
+        "body": "Preserve o espaço próprio do WhatsApp no cabeçalho, o foco visível e os alvos estáveis de formulário e navegação.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "**Do** preserve a continuidade azul, a hierarquia de Manrope e a leitura em Source Sans 3.",
+      "**Do** mantenha fotografia, percurso e conteúdo semanticamente disponíveis com movimento reduzido.",
+      "**Do** preserve o espaço do WhatsApp no cabeçalho, os alvos estáveis e o foco visível.",
+      "**Do** mantenha a sequência chegada, porta e pessoa reversível e verifique contato dos pés em movimento.",
+      "**Do** preserve fontes, créditos, proveniência e destinos reais ao estender a interface."
+    ],
+    "donts": [
+      "**Don't** apresente a articulação 2D como filmagem ou prometa realismo total.",
+      "**Don't** trate a aproximação gerada como recorte de pixels idênticos da fachada principal.",
+      "**Don't** esconda informação essencial atrás da animação ou transforme o formulário em envio automático.",
+      "**Don't** replique estilos históricos de WhatsApp flutuante, paleta verde da revisão 5 ou fontes substituídas como regras atuais."
+    ]
+  }
+}

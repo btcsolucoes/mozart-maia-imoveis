@@ -344,6 +344,62 @@
     floorNumber: "Piso {floor}",
   };
 
+  Object.assign(en, {
+  "heroLine1": "Buy. Sell.",
+  "heroLine2": "In Recife.",
+  "heroText": "Real estate brokerage and valuation with Mozart Maia. Working in the property market since 1990.",
+  "heroLink": "Talk to Mozart",
+  "descentTitle": "From property to negotiation.",
+  "descentText": "Location, documents and market value. A conversation that considers every part of your decision.",
+  "welcomeTitle": "Mozart Maia. In person.",
+  "welcomeText": "Tell Mozart what you are looking for or about the property you want to sell.",
+  "cityTitle": "Boa Viagem in view. Recife in your future.",
+  "cityFact1Title": "A real estate agent since 1990.",
+  "servicesTitle": "Buying or selling starts with a good conversation.",
+  "servicesIntro": "Share what you are looking for, the property you want to sell or the valuation you need. Define the next steps directly with Mozart.",
+  "coastAlt": "Illustrative apartment interior overlooking the Boa Viagem coast",
+  "coastCaption": "A fresh perspective on home.",
+  "coastCaption2": "Illustrative interior inspired by Boa Viagem. Not a property listing.",
+  "buyTitle": "Find a property.",
+  "sellTitle": "Sell your property.",
+  "valueTitle": "Understand its value.",
+  "aboutTitle": "Meet Mozart Maia.",
+  "technicalTitle": "Experience beyond brokerage.",
+  "processTitle": "How your consultation begins.",
+  "contactTitle": "Let’s talk about your property.",
+  "faqTitle": "Before we talk.",
+  "locationPhoto": "Aerial view of the Recife coastline",
+  "locationTitle": "Recife sets the scene. Meet us in Pina.",
+  "locationText": "Empresarial JCPM, 7th floor. Av. Antônio de Góes, 60. Arrange your appointment directly with Mozart."
+});
+  Object.assign(es, {
+  "heroLine1": "Comprar. Vender.",
+  "heroLine2": "En Recife.",
+  "heroText": "Corretaje y tasación con Mozart Maia. Experiencia en el mercado inmobiliario desde 1990.",
+  "heroLink": "Hablar con Mozart",
+  "descentTitle": "Del inmueble a la negociación.",
+  "descentText": "Ubicación, documentación y valor de mercado. Una conversación que considera cada parte de su decisión.",
+  "welcomeTitle": "Mozart Maia. En persona.",
+  "welcomeText": "Cuente lo que busca o presente el inmueble que quiere vender.",
+  "cityTitle": "Boa Viagem en el paisaje. Recife en su futuro.",
+  "cityFact1Title": "Corredor desde 1990.",
+  "servicesTitle": "Comprar o vender empieza con una buena conversación.",
+  "servicesIntro": "Cuente lo que busca, qué inmueble quiere vender o qué tasación necesita. Defina los próximos pasos directamente con Mozart.",
+  "coastAlt": "Interior ilustrativo de un apartamento con vistas a la costa de Boa Viagem",
+  "coastCaption": "Una nueva perspectiva de vivir.",
+  "coastCaption2": "Interior ilustrativo inspirado en Boa Viagem. No es un inmueble anunciado.",
+  "buyTitle": "Encontrar un inmueble.",
+  "sellTitle": "Vender su inmueble.",
+  "valueTitle": "Entender su valor.",
+  "aboutTitle": "Conozca a Mozart Maia.",
+  "technicalTitle": "Experiencia más allá del corretaje.",
+  "processTitle": "Cómo empieza la atención.",
+  "contactTitle": "Hablemos de su inmueble.",
+  "faqTitle": "Antes de conversar.",
+  "locationPhoto": "Vista aérea de la costa de Recife",
+  "locationTitle": "Recife es el escenario. Nos encontramos en Pina.",
+  "locationText": "Empresarial JCPM, 7.º piso. Av. Antônio de Góes, 60. Coordine su cita directamente con Mozart."
+});
   const dictionaries = { pt, en, es };
   let language = "pt";
 

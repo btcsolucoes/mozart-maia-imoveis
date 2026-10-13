@@ -3,17 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="theme-color"
-      content="#f4f6f4"
-      media="(prefers-color-scheme: light)"
-    />
-    <meta
-      name="theme-color"
-      content="#17211d"
-      media="(prefers-color-scheme: dark)"
-    />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#103d54" />
+    <meta name="color-scheme" content="dark" />
     <script>
       document.documentElement.classList.add("js");
       if (matchMedia("(prefers-reduced-motion: reduce)").matches)
@@ -42,23 +33,24 @@
       property="og:image"
       content="https://btcsolucoes.github.io/mozart-maia-imoveis/assets/recife.webp"
     />
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=5.2" />
-    <link rel="stylesheet" href="assets/fonts.css" />
-    <link rel="stylesheet" href="styles.css?v=5.2" />
-    <link rel="stylesheet" href="film.css?v=5.2" />
-    <link rel="stylesheet" href="content-motion.css?v=5.2" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=6.3" />
+    <link rel="stylesheet" href="assets/fonts.css?v=6.3" />
+    <link rel="stylesheet" href="styles.css?v=6.3" />
+    <link rel="stylesheet" href="film.css?v=6.3" />
+    <link rel="stylesheet" href="content-motion.css?v=6.3" />
+    <link rel="stylesheet" href="coastal.css?v=6.3" />
     <link
       rel="preload"
       as="image"
-      href="assets/roof-photo.webp"
+      href="assets/tower-coast-v6.webp"
       fetchpriority="high"
     />
-    <script src="i18n.js?v=5.2" defer></script>
-    <script src="app.js?v=5.2" defer></script>
+    <script src="i18n.js?v=6.3" defer></script>
+    <script src="app.js?v=6.3" defer></script>
     <script src="assets/vendor/gsap.min.js" defer></script>
     <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-    <script type="module" src="film.js?v=5.2"></script>
-    <script src="content-motion.js?v=5.2" defer></script>
+    <script type="module" src="film.js?v=6.3"></script>
+    <script src="content-motion.js?v=6.3" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo" data-i18n="skip"
@@ -128,6 +120,21 @@
             ES
           </button>
         </div>
+    <a
+      class="header-whatsapp"
+      href="https://wa.me/5581999712940"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Conversar com Mozart no WhatsApp"
+      data-i18n-aria-label="whatsappLabel"
+      ><img
+        src="assets/icons/brand-whatsapp.svg"
+        width="24"
+        height="24"
+        alt=""
+      /><span>WhatsApp</span></a
+    >
+
         <button
           class="menu-toggle"
           type="button"
@@ -151,15 +158,12 @@
           <div class="cinematic-shading" aria-hidden="true"></div>
           <div class="cinematic-copy" data-scene-copy="roof">
             <h1>
-              <span data-i18n="heroLine1">Seu imóvel.</span
-              ><span data-i18n="heroLine2">Em boas mãos.</span>
+              <span data-i18n="heroLine1">Comprar. Vender.</span
+              ><span data-i18n="heroLine2">Em Recife.</span>
             </h1>
-            <p data-i18n="heroText">
-              Comprar, vender ou avaliar em Recife. Converse diretamente com
-              Mozart Maia, corretor de imóveis desde 1990.
-            </p>
-            <a class="film-link" href="#servicos" data-i18n="heroLink"
-              >Encontre o serviço para você</a
+            <p data-i18n="heroText">Corretagem e avaliação com Mozart Maia. Experiência no mercado imobiliário desde 1990.</p>
+            <a class="film-link" href="#contato" data-i18n="heroLink"
+              >Falar com Mozart</a
             >
           </div>
           <div
@@ -168,11 +172,8 @@
             aria-hidden="true"
             inert
           >
-            <h2 data-i18n="descentTitle">Cada imóvel tem um contexto.</h2>
-            <p data-i18n="descentText">
-              Localização, documentação e valor de mercado fazem parte da
-              conversa.
-            </p>
+            <h2 data-i18n="descentTitle">Do imóvel à negociação.</h2>
+            <p data-i18n="descentText">Localização, documentação e valor de mercado. Uma conversa que considera cada parte da sua decisão.</p>
           </div>
           <div
             class="cinematic-copy"
@@ -180,10 +181,8 @@
             aria-hidden="true"
             inert
           >
-            <h2 data-i18n="welcomeTitle">Mozart Maia. Atendimento direto.</h2>
-            <p data-i18n="welcomeText">
-              Você fala com o profissional que vai conhecer o seu objetivo.
-            </p>
+            <h2 data-i18n="welcomeTitle">Mozart Maia. Pessoalmente.</h2>
+            <p data-i18n="welcomeText">Conte o que você procura ou apresente o imóvel que quer vender.</p>
           </div>
           <div
             class="cinematic-copy"
@@ -191,14 +190,12 @@
             aria-hidden="true"
             inert
           >
-            <h2 data-i18n="cityTitle">
-              Recife no horizonte. Seu plano em foco.
-            </h2>
+            <h2 data-i18n="cityTitle">Boa Viagem na paisagem. Recife no seu futuro.</h2>
           </div>
           <div class="lift-indicator" aria-label="Andar do elevador">24</div>
           <div class="city-facts">
             <article class="city-fact" aria-hidden="true" inert>
-              <h3 data-i18n="cityFact1Title">Desde 1990, em campo.</h3>
+              <h3 data-i18n="cityFact1Title">Corretor desde 1990.</h3>
               <p data-i18n="cityFact1Text">
                 Corretagem e avaliação imobiliária. CRECI-PE 6826 · CNAI 5829.
               </p>
@@ -219,40 +216,29 @@
           aria-labelledby="services-title"
         >
           <div class="section-heading">
-            <h2 id="services-title" data-i18n="servicesTitle">
-              O que você precisa resolver?
-            </h2>
-            <p data-i18n="servicesIntro">
-              Uma compra, uma venda e uma avaliação têm objetivos diferentes. O
-              atendimento começa entendendo o seu e reunindo as informações que
-              tornam a decisão mais clara.
-            </p>
+            <h2 id="services-title" data-i18n="servicesTitle">Comprar ou vender começa com uma boa conversa.</h2>
+            <p data-i18n="servicesIntro">Diga o que você procura, o imóvel que pretende vender ou a avaliação de que precisa. Mozart acompanha a definição dos próximos passos.</p>
           </div>
           <div class="services-layout">
             <figure class="service-image">
               <img
-                src="assets/recife.webp"
-                alt="Vista aérea da praia e dos edifícios de Boa Viagem, em Recife"
+                src="assets/boa-viagem-interior-v6.webp"
+                alt="Cena ilustrativa de um apartamento voltado para a orla de Boa Viagem"
                 data-i18n-alt="coastAlt"
-                width="2400"
-                height="1601"
+                width="1672"
+                height="941"
                 loading="lazy"
-                sizes="(max-width: 760px) 100vw, 58vw"
-                srcset="
-                  assets/recife-small.webp 1000w,
-                  assets/recife.webp       2400w
-                "
               />
               <figcaption>
-                <span data-i18n="coastCaption">Boa Viagem, Recife</span
+                <span data-i18n="coastCaption">Uma nova perspectiva de morar.</span
                 ><span data-i18n="coastCaption2"
-                  >Uma cidade. Diferentes formas de morar.</span
+                  >Interior ilustrativo inspirado em Boa Viagem. Não é um imóvel anunciado.</span
                 >
               </figcaption>
             </figure>
             <div class="service-descriptions">
               <article>
-                <h3 data-i18n="buyTitle">Comprar para a sua vida.</h3>
+                <h3 data-i18n="buyTitle">Encontrar um imóvel.</h3>
                 <p data-i18n="buyText">
                   A busca começa pela rotina que você quer ter. Região,
                   orçamento e características do imóvel ajudam a estabelecer
@@ -272,7 +258,7 @@
                 </ul>
               </article>
               <article>
-                <h3 data-i18n="sellTitle">Vender com contexto.</h3>
+                <h3 data-i18n="sellTitle">Vender o seu imóvel.</h3>
                 <p data-i18n="sellText">
                   O preço desejado é o início da conversa. Conhecer a
                   localização, o estado do imóvel e o mercado ajuda a discutir
@@ -294,7 +280,7 @@
                 </ul>
               </article>
               <article>
-                <h3 data-i18n="valueTitle">Avaliar com uma finalidade.</h3>
+                <h3 data-i18n="valueTitle">Entender o valor.</h3>
                 <p data-i18n="valueText">
                   Conhecer o valor para negociar e precisar de uma avaliação
                   formal são demandas diferentes. Informe a finalidade para
@@ -339,9 +325,7 @@
             </figcaption>
           </figure>
           <div class="about-copy" id="experiencia">
-            <h2 id="about-title" data-i18n="aboutTitle">
-              Quem está do outro lado da conversa.
-            </h2>
+            <h2 id="about-title" data-i18n="aboutTitle">Conheça Mozart Maia.</h2>
             <p class="about-lead" data-i18n="aboutLead">
               Mozart Maia é corretor de imóveis desde 1990 e pós-graduado em
               Gestão em Negócios Imobiliários.
@@ -387,9 +371,7 @@
           aria-labelledby="technical-title"
         >
           <div class="section-heading">
-            <h2 id="technical-title" data-i18n="technicalTitle">
-              Quando a questão vai além da negociação.
-            </h2>
+            <h2 id="technical-title" data-i18n="technicalTitle">Experiência que vai além da corretagem.</h2>
             <p data-i18n="technicalIntro">
               Além da corretagem, o escritório recebe demandas técnicas
               imobiliárias. Conte a finalidade e o prazo do seu caso para
@@ -435,9 +417,7 @@
           aria-labelledby="process-title"
         >
           <div class="section-heading">
-            <h2 id="process-title" data-i18n="processTitle">
-              Da primeira mensagem ao próximo passo.
-            </h2>
+            <h2 id="process-title" data-i18n="processTitle">Como começa o atendimento.</h2>
           </div>
           <div class="process-list">
             <article>
@@ -466,15 +446,20 @@
             </article>
           </div>
         </section>
+        <section class="location-scene" aria-labelledby="location-title">
+          <div class="location-visual"><img src="assets/recife.webp" alt="Vista aérea da orla de Recife" data-i18n-alt="locationPhoto" width="2400" height="1601" loading="lazy" /></div>
+          <div class="location-copy">
+            <h2 id="location-title" data-i18n="locationTitle">Recife é o cenário. Nosso encontro é no Pina.</h2>
+            <p data-i18n="locationText">Empresarial JCPM, 7º andar. Av. Antônio de Góes, 60. Combine seu atendimento diretamente com Mozart.</p>
+          </div>
+        </section>
         <section
           class="contact section-pad"
           id="contato"
           aria-labelledby="contact-title"
         >
           <div class="contact-heading">
-            <h2 id="contact-title" data-i18n="contactTitle">
-              Vamos falar do seu imóvel?
-            </h2>
+            <h2 id="contact-title" data-i18n="contactTitle">Vamos conversar sobre o seu imóvel.</h2>
             <p data-i18n="contactIntro">
               Escolha o assunto e prepare sua mensagem. Se preferir, use o
               telefone ou o e-mail para conversar diretamente com Mozart.
@@ -654,9 +639,7 @@
           </div>
         </section>
         <section class="faq section-pad" aria-labelledby="faq-title">
-          <h2 id="faq-title" data-i18n="faqTitle">
-            Perguntas que já podemos esclarecer.
-          </h2>
+          <h2 id="faq-title" data-i18n="faqTitle">Antes da nossa conversa.</h2>
           <div class="faq-list">
             <details>
               <summary data-i18n="faq1Title">
@@ -729,19 +712,5 @@
         >
       </p>
     </footer>
-    <a
-      class="whatsapp-float"
-      href="https://wa.me/5581999712940"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Conversar com Mozart no WhatsApp"
-      data-i18n-aria-label="whatsappLabel"
-      ><img
-        src="assets/icons/brand-whatsapp.svg"
-        width="24"
-        height="24"
-        alt=""
-      /><span>WhatsApp</span></a
-    >
   </body>
 </html>
