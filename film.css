@@ -1,6 +1,6 @@
 /* Local stacking: photograph 0, reading shade 1, text 2. */
 .cinematic{position:relative;height:auto;isolation:isolate;background:#28332e}
-.js .cinematic:not(.is-static){height:480svh}
+.js .cinematic:not(.is-static){height:720svh}
 .cinematic-sticky{position:sticky;top:var(--header-height,80px);height:calc(100svh - var(--header-height,80px));min-height:500px;overflow:hidden;background:#28332e url('assets/roof-photo.webp') 65% center/cover no-repeat}
 #city-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .5s ease}
 .ready #city-canvas{opacity:1}
@@ -24,7 +24,7 @@
 .cinematic.is-static .cinematic-copy[data-scene-copy=roof]{opacity:1!important;visibility:visible!important;transform:none!important}
 .cinematic.is-static .city-facts,.cinematic.is-static .lift-indicator,.cinematic.is-static .cinematic-copy:not([data-scene-copy=roof]){display:none}
 @media(max-width:700px){
- .js .cinematic:not(.is-static){height:440svh}
+ .js .cinematic:not(.is-static){height:660svh}
  .cinematic-sticky{min-height:500px;background-position:65% center}
  .cinematic-copy{left:24px;right:24px;top:10%;max-width:510px}
  .cinematic-copy h1{font-size:clamp(40px,9.4vw,60px)}
@@ -40,6 +40,7 @@
  .cinematic.is-static .cinematic-sticky{min-height:560px}
 }
 .motion-off #city-canvas{transition:none}
+.js.motion-off .cinematic{height:auto}
 .motion-off .cinematic-sticky{position:relative;top:0}
 html:not(.js) .cinematic-sticky{position:relative;top:0}
 html:not(.js) .lift-indicator,html:not(.js) .city-facts,html:not(.js) .motion-toggle{display:none}

@@ -1,6 +1,6 @@
 # Mozart Maia | Negócios Imobiliários
 
-Landing page em português, inglês e espanhol para quem deseja comprar, vender ou avaliar um imóvel em Recife. A revisão 4 reúne uma única abertura, serviços detalhados, perfil profissional, atuação pericial, processo de atendimento e contato.
+Landing page em português, inglês e espanhol para quem deseja comprar, vender ou avaliar um imóvel em Recife. A revisão 5 mantém uma única abertura, serviços detalhados, perfil profissional, atuação pericial, processo de atendimento e contato, com a descida do elevador pela fachada, o crescimento dos prédios e movimentos no restante da página.
 
 Endereço do projeto: [btcsolucoes.github.io/mozart-maia-imoveis](https://btcsolucoes.github.io/mozart-maia-imoveis/).
 
@@ -21,8 +21,10 @@ Abra [localhost:4174](http://localhost:4174). Use um servidor HTTP para carregar
 - `app.js`: menu, preferência de movimento e preparação da mensagem de WhatsApp.
 - `i18n.js`: traduções PT/EN/ES, textos acessíveis e mensagens dinâmicas; captura o português original antes de traduzir.
 - `film.js`: montagem fotográfica no Canvas 2D, sincronizada à rolagem.
+- `elevator-scene.js`: deslocamento da cabine pela fachada, acompanhamento da câmera, reflexos e chegada ao térreo.
+- `skyline-scene.js`: crescimento independente de 21 camadas de fachadas, atrás da vegetação e da orla.
 - `film.css`: composição da abertura, texto sobre as imagens e apresentação estática.
-- `content-motion.js` e `content-motion.css`: movimento da fotografia de serviços, leitura dos serviços, retrato, credenciais, percurso do processo e contato.
+- `content-motion.js` e `content-motion.css`: enquadramento das fotografias, luz, títulos, serviços, retrato, credenciais, serviços técnicos, percurso do processo, contato, redes sociais, dúvidas e rodapé.
 - `assets/vendor/gsap.min.js` e `assets/vendor/ScrollTrigger.min.js`: GSAP e ScrollTrigger 3.13.0, servidos localmente.
 - `assets/fonts.css`: fontes Outfit e Plus Jakarta Sans hospedadas localmente.
 - `assets/icons/`: ícones SVG locais do Tabler, com origem e licença MIT.
@@ -36,14 +38,17 @@ O runtime atual usa Canvas 2D e ScrollTrigger. Three.js e WebGL deixaram de ser 
 | --- | --- |
 | `assets/roof-photo.webp` | Vista de um rooftop de aparência fotográfica, gerada para a abertura e inspirada na arquitetura da orla. |
 | `assets/elevator-frames.webp` | Composição gerada com estados do elevador; fornece os planos de fundo e as portas usados na montagem. |
+| `assets/tower-facade-v5.webp` | Fachada completa gerada, inspirada na arquitetura de Boa Viagem, para acompanhar a descida do elevador. |
+| `assets/lift-cabin-v5.webp` | Cabine gerada com transparência, composta separadamente sobre a fachada. |
+| `assets/skyline-boa-viagem-v5.webp` | Composição gerada em dois painéis, com e sem prédios, que fornece as 21 camadas do crescimento da cidade. |
 | `assets/mozart-photo-atlas.png` | Oito poses de aparência fotográfica geradas a partir do retrato de Mozart, com fundo transparente. |
-| `assets/recife.webp` | Fotografia real de Recife, usada no horizonte final e na seção de serviços. |
+| `assets/recife.webp` | Fotografia real de Recife, usada nos serviços e como alternativa se o módulo do horizonte não carregar. |
 | `assets/recife-small.webp` | Versão redimensionada da mesma fotografia para telas menores. |
 | `assets/mozart.webp` | Retrato de Mozart obtido no site original do profissional. |
 
-A abertura parte do rooftop, aproxima o enquadramento e passa ao elevador. A indicação dos andares acompanha a descida; as portas abrem depois da chegada ao térreo. Mozart aparece por uma sequência de poses, seguida da transição para a fotografia real de Recife. As informações do escritório surgem durante essa passagem. A rolagem controla a sequência nos dois sentidos.
+A abertura parte do rooftop, aproxima o enquadramento e mostra uma cabine deslocando-se pela fachada enquanto a câmera acompanha a descida por 24 andares. A cabine acelera, percorre o trecho central e desacelera antes do térreo; o contador acompanha sua posição. Só depois da chegada a cena passa ao hall, as portas abrem e Mozart sai por uma sequência de poses. A transição final revela a orla inspirada em Boa Viagem, com 21 camadas de fachadas crescendo em momentos diferentes, enquanto aparecem as informações do escritório. As fachadas mantêm suas proporções e surgem por trás da vegetação. A rolagem controla a sequência nos dois sentidos.
 
-O efeito é uma **montagem de imagens com movimento de câmera, transições e animação quadro a quadro**. As cenas geradas e a caminhada não são filmagem real de Mozart ou de um empreendimento. O horizonte utiliza uma aproximação da fotografia inteira; não há crescimento independente dos prédios. Oito poses discretas também não equivalem à continuidade de uma captura de movimento.
+O efeito é uma **montagem de imagens com movimento de câmera, camadas independentes, transições e animação quadro a quadro**. As cenas geradas e a caminhada não são filmagem real de Mozart ou de um empreendimento. Oito poses discretas também não equivalem à continuidade de uma captura de movimento. A origem e os briefs de geração das novas imagens estão em [`assets/elevator-v5-provenance.md`](assets/elevator-v5-provenance.md) e [`assets/skyline-v5-provenance.md`](assets/skyline-v5-provenance.md).
 
 ## Navegação, movimento e contato
 
@@ -76,7 +81,7 @@ Destinos extraídos do HTML do [site original de Mozart](https://www.mozartperit
 
 A fotografia de Recife é de [Arne Müseler](https://www.arne-mueseler.com/), disponível no [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Recife_aerial_view.jpg), sob [CC BY-SA 3.0 DE](https://creativecommons.org/licenses/by-sa/3.0/de/). As versões do projeto recebem recorte, redimensionamento e sobreposição visual de cor. Preserve a atribuição e a licença da fotografia adaptada.
 
-O retrato vem do [site de Mozart Maia](https://www.mozartperitojudicial.com.br/). A geração do personagem a partir desse retrato foi autorizada pelo solicitante. Rooftop, elevador e poses são representações artísticas produzidas para este projeto; não documentam uma visita real, uma caminhada real ou um imóvel anunciado.
+O retrato vem do [site de Mozart Maia](https://www.mozartperitojudicial.com.br/). A geração do personagem a partir desse retrato foi autorizada pelo solicitante. Rooftop, fachada, cabine, horizonte animado e poses são representações artísticas produzidas para este projeto; não documentam uma visita real, uma caminhada real ou um imóvel anunciado.
 
 Outfit e Plus Jakarta Sans são distribuídas sob SIL Open Font License. As cópias das licenças estão em `assets/outfit-OFL.txt` e `assets/plusjakartasans-OFL.txt`.
 
@@ -84,7 +89,20 @@ GSAP e ScrollTrigger 3.13.0 conservam os cabeçalhos de autoria e copyright da G
 
 Os ícones de redes sociais e WhatsApp são SVG do Tabler servidos localmente em `assets/icons/`. A licença MIT está em `assets/icons/LICENSE.txt`, e a origem está registrada em `assets/icons/SOURCE.txt`.
 
-## Verificações executadas na revisão 4
+## Verificações da revisão 5
+
+- PT/EN/ES em 320, 390, 768, 1100 e 1440px, sem overflow horizontal. Formulário com erro e preparação de mensagem localizada testados com a abertura do WhatsApp interceptada, sem envio.
+- Menu mobile fecha com Escape e devolve o foco ao botão. Abertura inicial com movimento reduzido e página sem JavaScript mantêm conteúdo e contato disponíveis.
+- Posição da cabine verificada durante a descida: o contador chega ao térreo antes do início da abertura das portas e da caminhada.
+- Crescimento direto e reverso do horizonte verificado: 21 camadas completas ao final, com retorno ao estado intermediário ao rolar para cima.
+- Integração com 24 ScrollTriggers ativos; redução de movimento remove todos, e a reativação restaura 24 sem duplicar a moldura do retrato nem a rota SVG.
+- Capturas da sequência em desktop de 1440px e celular de 390px, sem overflow horizontal nos pontos conferidos.
+- Troca de idioma e reativação do movimento verificadas em conjunto.
+- Lighthouse mobile local da revisão 5: acessibilidade 100, boas práticas 100 e SEO 100; 59 verificações aprovadas e nenhuma reprovada. Não foram medidas novas métricas de desempenho nesta rodada.
+
+Os resultados históricos abaixo pertencem à revisão 4 e são mantidos como registro separado. As notas de laboratório não representam medições de visitantes reais.
+
+## Histórico: verificações executadas na revisão 4
 
 Os resultados abaixo correspondem ao QA local da revisão 4 integrada:
 

@@ -1,8 +1,12 @@
+import { renderBuildingDescent, travelCurve } from './elevator-scene.js?v=5.2';
+import { createSkylineScene } from './skyline-scene.js?v=5.2';
 // Photographic plates and physical door occlusion share one scroll clock.
 // GSAP is vendored locally; no WebGL or timer-driven walking loop.
 const section = document.getElementById('jornada');
 const canvas = document.getElementById('city-canvas');
 const ctx = canvas.getContext('2d', { alpha: false });
+const lobbyCanvas = document.createElement('canvas');
+const lobbyContext = lobbyCanvas.getContext('2d', { alpha: false });
 const compact = matchMedia('(max-height: 500px)');
 const copy = [...section.querySelectorAll('[data-scene-copy]')];
 const facts = [...section.querySelectorAll('.city-fact')];
@@ -13,7 +17,7 @@ const smooth = x => x * x * (3 - 2 * x);
 const smoother = x => x * x * x * (x * (x * 6 - 15) + 10);
 const lerp = (a, b, t) => a + (b - a) * t;
 const motionOff = () => compact.matches || document.documentElement.classList.contains('motion-off');
-let plates, trigger, width = 1, height = 1, progress = 0;
+let plates, skyline, trigger, scrub, width = 1, height = 1, progress = 0;
 function load(src) {
   return new Promise((resolve, reject) => {
     const image = new Image();
@@ -32,28 +36,32 @@ const poses = [
   [62, 13, 226, 583], [361, 13, 235, 584], [671, 16, 236, 585], [984, 15, 235, 584],
   [60, 630, 238, 593], [371, 630, 232, 591], [673, 630, 231, 592], [989, 630, 228, 592]
 ];
-function paintElevator(p) {
+function hallGeometry(p) {
   const image = plates.elevator;
   const frameW = image.width / 2, frameH = image.height;
-  const zoom = 1 + .055 * smooth(segment(p, .24, .58));
+  const zoom = 1 + .035 * smooth(segment(p, .67, .865));
   const scale = Math.max(width / frameW, height / frameH) * zoom;
   const w = frameW * scale, h = frameH * scale;
   const x = (width - w) * .515, y = (height - h) * .46;
-  ctx.drawImage(image, frameW, 0, frameW, frameH, x, y, w, h);
   const opening = { x: x + w * .399, y: y + h * .154, w: w * .259, h: h * .658 };
-  const door = p < .60 ? 0 : smoother(segment(p, .60, .675));
-  const walk = smooth(segment(p, .685, .785));
-  const floor = Math.max(0, Math.round(24 * (1 - smoother(segment(p, .25, .56)))));
+  return { image, frameW, frameH, x, y, w, h, opening };
+}
+function paintElevator(p, ctx) {
+  const { image, frameW, frameH, x, y, w, h, opening } = hallGeometry(p);
+  ctx.drawImage(image, frameW, 0, frameW, frameH, x, y, w, h);
+  const door = smoother(segment(p, .70, .775));
+  const walk = smooth(segment(p, .789, .865));
+  const floor = 0;
   indicator.textContent = floor === 0 ? (window.MozartI18n?.language === 'en' ? 'G' : window.MozartI18n?.language === 'es' ? 'PB' : 'T') : String(floor).padStart(2, '0');
   indicator.style.transform = `translate3d(${opening.x + opening.w / 2}px,${opening.y - 25}px,0) translateX(-50%)`;
   indicator.setAttribute('aria-label', window.MozartI18n ? window.MozartI18n.t(floor === 0 ? 'floorGround' : 'floorNumber', { floor }) : (floor === 0 ? 'Elevador no térreo' : `Elevador no andar ${floor}`));
-  if (p > .56) {
-    const walking = walk > .015 && walk < .93;
-    const frame = walking ? Math.floor(segment(p, .685, .779) * 12) % 6 : 7;
+  if (p > .68) {
+    const walking = walk > .01 && walk < .94;
+    const frame = walking ? Math.min(5, Math.floor(walk * 6)) : 6;
     const [sx, sy, sw, sh] = poses[frame];
-    const bodyH = opening.h * lerp(.79, 1.00, walk);
+    const bodyH = opening.h * lerp(.79, .98, walk);
     const bodyW = bodyH * sw / sh;
-    const footY = opening.y + opening.h * lerp(.95, 1.12, walk);
+    const footY = opening.y + opening.h * lerp(.95, 1.105, walk);
     const center = opening.x + opening.w * lerp(.5, .54, walk);
     ctx.save();
     ctx.translate(center, footY - 2);
@@ -62,8 +70,15 @@ function paintElevator(p) {
     shadow.addColorStop(0, 'rgba(20,24,21,.32)');
     shadow.addColorStop(1, 'rgba(20,24,21,0)');
     ctx.fillStyle = shadow; ctx.fillRect(-1, -1, 2, 2); ctx.restore();
+    // A low reflection anchors the photographic person to the polished lobby floor.
     ctx.save();
-    ctx.filter = 'saturate(.84) brightness(.94)';
+    ctx.beginPath(); ctx.rect(0, footY, width, height - footY); ctx.clip();
+    ctx.translate(center, footY); ctx.scale(1, -.16);
+    ctx.globalAlpha *= .08;
+    ctx.drawImage(plates.person, sx, sy, sw, sh, -bodyW / 2, -bodyH, bodyW, bodyH);
+    ctx.restore();
+    ctx.save();
+    ctx.filter = 'saturate(.86) brightness(.94)';
     ctx.drawImage(plates.person, sx, sy, sw, sh, center - bodyW / 2, footY - bodyH, bodyW, bodyH);
     ctx.restore();
   }
@@ -92,40 +107,62 @@ function render(p) {
   if (!plates) return;
   const dpr = Math.min(devicePixelRatio, 1.8);
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.globalAlpha = 1;
-  cover(plates.roof, 1 + .55 * smoother(segment(p, .015, .27)), .74, .4);
-  const liftAlpha = smooth(segment(p, .205, .28));
-  if (liftAlpha && p < .88) { ctx.globalAlpha = liftAlpha; paintElevator(p); }
-  const cityAlpha = smooth(segment(p, .81, .88));
+  ctx.imageSmoothingQuality = 'high';
+  cover(plates.roof, 1 + .52 * smoother(segment(p, .015, .19)), .74, .4);
+  const facadeAlpha = smooth(segment(p, .125, .205));
+  const hallAlpha = smooth(segment(p, .638, .683));
+  let descent;
+  if (facadeAlpha && p < .683) {
+    ctx.globalAlpha = facadeAlpha;
+    descent = renderBuildingDescent(ctx, plates, width, height, p, hallGeometry(.67).opening);
+  }
+  if (hallAlpha && p < .91) {
+    lobbyContext.setTransform(dpr, 0, 0, dpr, 0, 0);
+    lobbyContext.globalAlpha = 1;
+    lobbyContext.imageSmoothingQuality = 'high';
+    paintElevator(p, lobbyContext);
+    ctx.globalAlpha = hallAlpha;
+    ctx.drawImage(lobbyCanvas, 0, 0, width, height);
+  }
+  const cityAlpha = smooth(segment(p, .875, .908));
+  let skylineMetrics;
   if (cityAlpha) {
     ctx.globalAlpha = cityAlpha;
-    cover(plates.city, 1 + .10 * smooth(segment(p, .83, 1)), width < 700 ? .45 : .5, .56);
+    if (skyline) skylineMetrics = skyline.render(ctx, width, height, segment(p, .892, .995));
+    else cover(plates.city, 1 + .10 * smooth(segment(p, .88, 1)), .5, .56);
   }
   ctx.globalAlpha = 1;
   const ranges = {
-    roof: 1 - smooth(segment(p, .13, .205)),
-    descent: smooth(segment(p, .29, .33)) * (1 - smooth(segment(p, .51, .57))),
-    welcome: smooth(segment(p, .69, .73)) * (1 - smooth(segment(p, .79, .825))),
-    city: smooth(segment(p, .87, .91))
+    roof: 1 - smooth(segment(p, .10, .165)),
+    descent: smooth(segment(p, .245, .28)) * (1 - smooth(segment(p, .48, .54))),
+    welcome: smooth(segment(p, .795, .825)) * (1 - smooth(segment(p, .858, .88))),
+    city: smooth(segment(p, .918, .947))
   };
   copy.forEach(el => visibility(el, ranges[el.dataset.sceneCopy]));
-  facts.forEach((el, i) => visibility(el, smooth(segment(p, .905 + i * .032, .935 + i * .032)), 22));
-  indicator.style.opacity = liftAlpha * (1 - cityAlpha);
-  indicator.style.visibility = liftAlpha * (1 - cityAlpha) < .1 ? 'hidden' : 'visible';
+  facts.forEach((el, i) => visibility(el, smooth(segment(p, .95 + i * .018, .977 + i * .018)), 22));
+  indicator.style.opacity = hallAlpha * (1 - cityAlpha);
+  indicator.style.visibility = hallAlpha * (1 - cityAlpha) < .1 ? 'hidden' : 'visible';
   section.dataset.progress = p.toFixed(4);
-  section.dataset.scene = p < .25 ? 'roof' : p < .81 ? 'elevator' : 'city';
-  section.dataset.floor = String(Math.max(0, Math.round(24 * (1 - smoother(segment(p, .25, .56))))));
-  section.dataset.doorOpen = smoother(segment(p, .60, .675)).toFixed(3);
-  section.dataset.walk = smooth(segment(p, .685, .785)).toFixed(3);
-  section.style.setProperty('--photo-shade', p < .21 || p > .84 ? .8 : .87);
+  section.dataset.scene = p < .205 ? 'roof' : p < .638 ? 'descent' : p < .875 ? 'lobby' : 'city';
+  section.dataset.floor = String(Math.max(0, Math.ceil(24 * (1 - travelCurve(segment(p, .225, .585))) - .0001)));
+  section.dataset.doorOpen = smoother(segment(p, .70, .775)).toFixed(3);
+  section.dataset.walk = smooth(segment(p, .789, .865)).toFixed(3);
+  section.dataset.carY = descent ? descent.worldCarY.toFixed(4) : p >= .585 ? '.9160' : '.1080';
+  section.dataset.cameraY = descent ? descent.cameraY.toFixed(4) : '';
+  section.dataset.buildings = String(skylineMetrics?.complete || 0);
+  section.dataset.skylineGrowth = (skylineMetrics?.meanHeight || 0).toFixed(4);
+  section.style.setProperty('--photo-shade', p < .165 || p > .91 ? .80 : p < .638 ? .78 : .72);
 }
 function measure() {
   const bounds = canvas.getBoundingClientRect();
   width = Math.max(1, bounds.width); height = Math.max(1, bounds.height);
   const dpr = Math.min(devicePixelRatio, 1.8);
   canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
+  lobbyCanvas.width = canvas.width; lobbyCanvas.height = canvas.height;
   render(progress);
 }
 function syncMotion() {
+  scrub?.kill(); scrub = null;
   trigger?.kill(); trigger = null;
   const previousHeight = section.offsetHeight;
   const previousScroll = scrollY;
@@ -148,23 +185,28 @@ function syncMotion() {
   if (off) { render(0); restoreContext(); requestAnimationFrame(restoreContext); return; }
   window.gsap.registerPlugin(window.ScrollTrigger);
   // Native sticky supplies the pin. ScrollTrigger batches scroll and resize calculations.
-  trigger = window.ScrollTrigger.create({
+  const clock = { value: 0 };
+  scrub = window.gsap.to(clock, { value: 1, ease: 'none', onUpdate: () => render(clock.value), scrollTrigger: {
     trigger: section,
     start: () => `top top+=${parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 80}`,
     end: 'bottom bottom',
-    onUpdate: self => render(self.progress),
     onRefresh: self => { measure(); render(self.progress); },
+    scrub: .38,
     invalidateOnRefresh: true
-  });
+  }});
+  trigger = scrub.scrollTrigger;
   trigger.refresh();
   restoreContext(); requestAnimationFrame(restoreContext);
 }
 try {
-  const [roof, elevator, person, city] = await Promise.all([
+  const [roof, elevator, person, city, facade, cabin, skylineScene] = await Promise.all([
     load('assets/roof-photo.webp'), load('assets/elevator-frames.webp'),
-    load('assets/mozart-photo-atlas.png'), load('assets/recife.webp')
+    load('assets/mozart-photo-atlas.png'), load('assets/recife.webp'),
+    load('assets/tower-facade-v5.webp'), load('assets/lift-cabin-v5.webp'),
+    createSkylineScene().catch(() => null)
   ]);
-  plates = { roof, elevator, person, city };
+  plates = { roof, elevator, person, city, facade, cabin };
+  skyline = skylineScene;
   section.classList.add('ready'); syncMotion();
 } catch (error) {
   section.classList.add('is-static', 'failed');
@@ -175,5 +217,5 @@ document.addEventListener('mozart:motionchange', syncMotion);
 document.addEventListener('mozart:languagechange', () => { render(progress); requestAnimationFrame(() => trigger?.refresh()); });
 compact.addEventListener('change', syncMotion);
 document.fonts.ready.then(() => trigger?.refresh());
-addEventListener('pagehide', event => { if (!event.persisted) trigger?.kill(); });
+addEventListener('pagehide', event => { if (!event.persisted) { scrub?.kill(); trigger?.kill(); } });
 addEventListener('pageshow', event => { if (event.persisted) syncMotion(); });
