@@ -164,3 +164,14 @@ html:not(.js) .site-header{position:relative;height:auto;flex-wrap:wrap}
 #city-canvas{z-index:1}.cinematic-shading{z-index:2}.cinematic-copy,.city-facts,.lift-indicator{z-index:3}
 
 .cinematic-sticky{max-width:calc(var(--scene-height,100svh)*2.32);margin-inline:auto}
+.skyline-reveal,.skyline-scene{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.skyline-reveal{z-index:1;visibility:hidden;contain:paint}
+.skyline-world{position:absolute;left:0;top:0;width:1448px;height:543px;transform-origin:0 0}
+.skyline-towers{position:absolute;inset:0 auto auto 0;width:1448px;height:406px;overflow:hidden}
+@media(max-width:760px){.cm-photo-wash{display:none}.location-visual img{filter:none}}
+#jornada{view-timeline-name:--journey;view-timeline-axis:block;view-timeline-inset:0}
+@keyframes skyline-rise{from{transform:translate3d(0,100%,0)}to{transform:translate3d(0,0,0)}}
+@keyframes skyline-uncover{from{transform:translate3d(0,-100%,0)}to{transform:translate3d(0,0,0)}}
+.native-scroll,.native-scroll .skyline-scene,.skyline-tower-native{animation:skyline-rise 1s both cubic-bezier(.65,0,.35,1);animation-timeline:--journey;animation-range:contain 65.5% contain 71%}
+.native-scroll .skyline-scene{animation-name:skyline-uncover}
+.cinematic.is-static .skyline-reveal{display:none}

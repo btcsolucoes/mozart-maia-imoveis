@@ -177,6 +177,8 @@
     const ScrollTrigger = window.ScrollTrigger;
     if (pageAway || motionOff() || !gsap || !ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ignoreMobileResize:true});
+    const smallScreen=matchMedia('(max-width:760px)').matches;
     root.dataset.contentMotion = 'active';
     context = gsap.context(() => {});
     try {
@@ -203,7 +205,7 @@
           camera.fromTo(serviceImage,
             { scale: 1.18, xPercent: -2, yPercent: 3.5 },
             { scale: 1.10, xPercent: 2, yPercent: -3.5, duration: 1, ease: 'none' }, 0);
-          camera.fromTo(photo, {clipPath:'inset(7% 5% 7% 5% round 16px)'}, {clipPath:'inset(0% 0% 0% 0% round 16px)',duration:.32,ease:'power2.out'},0);
+          if(!smallScreen) camera.fromTo(photo, {clipPath:'inset(7% 5% 7% 5% round 16px)'}, {clipPath:'inset(0% 0% 0% 0% round 16px)',duration:.32,ease:'power2.out'},0);
           camera.fromTo(wash, { xPercent: -125 }, { xPercent: 165, duration: 1, ease: 'none' }, 0);
           camera.fromTo(wash, { opacity: 0 }, { opacity: .32, duration: .42, ease: 'sine.inOut' }, 0);
           camera.to(wash, { opacity: 0, duration: .58, ease: 'sine.inOut' }, .42);
@@ -240,7 +242,7 @@
           const arrival = gsap.timeline({ scrollTrigger: {
             trigger: frame, start: 'top 96%', end: 'bottom 38%', scrub: .5, invalidateOnRefresh: true
           } });
-          arrival.fromTo(frame,
+          if(!smallScreen) arrival.fromTo(frame,
             { clipPath: 'inset(8% 6% 10% 6% round 16px)' },
             { clipPath: 'inset(0% 0% 0% 0% round 16px)', duration: .64, ease: 'power1.out' }, 0);
           arrival.fromTo(portrait,

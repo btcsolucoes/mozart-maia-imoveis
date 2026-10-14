@@ -130,7 +130,7 @@ const journeyObserver = new IntersectionObserver(([entry]) => {
 journeyObserver.observe(journey);
 
 // Follow the visible viewport, including mobile browser toolbars, without polling.
-let viewportFrame=0;
+let viewportFrame=0,viewportTimer=0;
 function syncVisibleViewport(){
   cancelAnimationFrame(viewportFrame);
   viewportFrame=requestAnimationFrame(()=>{
@@ -143,6 +143,8 @@ function syncVisibleViewport(){
     root.style.setProperty('--viewport-bottom',Math.max(0,innerHeight-visibleHeight-(viewport?.offsetTop||0))+'px');
   });
 }
-window.visualViewport?.addEventListener('resize',syncVisibleViewport,{passive:true});
-window.addEventListener('resize',syncVisibleViewport,{passive:true});
+// Browser toolbar animation must not reallocate the drawing surface each frame.
+function queueViewportResize(){clearTimeout(viewportTimer);viewportTimer=setTimeout(syncVisibleViewport,180);}
+window.visualViewport?.addEventListener('resize',queueViewportResize,{passive:true});
+window.addEventListener('resize',queueViewportResize,{passive:true});
 syncVisibleViewport();

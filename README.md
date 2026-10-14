@@ -25,7 +25,7 @@ Abra [localhost:4174](http://localhost:4174). Use HTTP para carregar os módulos
 - `film.css`, `film.js`: palco e cronologia da abertura, sincronizados com a rolagem.
 - `building-scene.js`: câmera, fachada, cabine, chegada e abertura das portas.
 - `person-motion.js`: articulação contínua do personagem fotográfico.
-- `skyline-scene.js`: 21 silhuetas fotográficas que crescem atrás da vegetação.
+- `skyline-compositor.js`: 21 recortes fotográficos preparados em assets/motion, animados em camadas atrás da vegetação. `skyline-scene.js` preserva o algoritmo histórico que originou esses recortes.
 - `content-motion.js`, `content-motion.css`: movimentos nas demais seções e limpeza dos efeitos ao reduzir movimento.
 - `app.js`: menu, movimento e preparação da mensagem de WhatsApp.
 - `i18n.js`: traduções PT/EN/ES, rótulos acessíveis e mensagens do formulário.
@@ -83,3 +83,15 @@ GitHub Pages publica a raiz da branch `main` após o push, sem build de aplicaç
 - Atlas e fachada em WebP otimizado; fontes locais WOFF2 com subconjuntos Latin e Latin Extended.
 - Conferência em 320×568, 390×844, 768×900, 1440×900, 1920×1080 e 2560×1080 nos três idiomas: sem overflow horizontal, controles dentro da tela, texto acima dos controles, 21 edifícios completos. Alternância de movimento: 0/25 triggers, sem duplicação de fundo. Viewport 390×650: palco de 650px e controles dentro da tela.
 - Medição de laboratório em Chrome, viewport móvel 390×844, DPR 3, CPU 4×, rede sem limitação: cenário de 100 passos de rolagem. Mediana dos intervalos de quadros de 33,3ms para 21,4ms; p95 de 141,4ms para 56,1ms. Recursos carregados no cenário de aproximadamente 5,23MB para 2,91MB (decodedBodySize). Esses números são de emulação local, não de aparelhos físicos ou visitantes reais.
+
+## Ajustes 6.7 — rolagem em celulares
+
+O relato de lentidão durante a rolagem no Samsung motivou uma mudança de renderização. O horizonte usa imagens recortadas previamente e animações CSS vinculadas à rolagem quando disponíveis, com alternativa por transformações JavaScript. Os 21 prédios, a sequência do elevador e a rolagem reversa permanecem. A memória RGBA teórica das três imagens de cabine, interior e personagem cai de 18,87MB para 2,40MB; isso não representa a memória total da aba. Os arquivos correspondentes passam de 665.866 para 85.222 bytes.
+
+Redimensionamentos causados pela barra móvel são agrupados em 180ms para evitar recriar continuamente o Canvas. ScrollTrigger ignora pequenas variações de altura no celular. Até 760px, o movimento das fotos permanece, sem máscaras animadas e reflexos com mistura de camadas. O Canvas deixa de ser redesenhado no horizonte e quando o progresso não mudou.
+
+Conferência: 320×568, 390×844, 768×900 e 1920×1080, PT/EN/ES, sem overflow ou sobreposição dos controles. Reversão até o topo, redução e reativação de movimento (0/25 triggers e apenas um horizonte), alternativa sem animações CSS de rolagem e falha de recurso com apresentação estática verificados.
+
+Laboratório de rolagem: Chrome, 390×844, CPU limitada em 8×, 90 passos entre 71,5% e 97,5% da abertura. Versão anterior: intervalo mediano 18,8ms, p95 36,8ms, sete intervalos acima de 32ms. Versão 6.7 com rolagem CSS nativa: 16,7ms, 19,2ms e zero, respectivamente. São amostras sintéticas no mesmo navegador, não uma medição física no Samsung nem garantia de FPS. A comparação intermediária de camadas controladas só por JavaScript não melhorou esse teste e foi substituída pela animação nativa com alternativa de compatibilidade.
+
+Referência técnica: [animações de rolagem e desempenho, Chrome for Developers](https://developer.chrome.com/blog/scroll-animation-performance-case-study). Os resultados acima foram medidos neste projeto.

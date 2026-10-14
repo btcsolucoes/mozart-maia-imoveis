@@ -1,5 +1,5 @@
-import {createBuildingScene} from './building-scene.js?v=6.6';
-import {createSkylineScene} from './skyline-scene.js?v=6.6';
+import {createBuildingScene} from './building-scene.js?v=6.7';
+import {createSkylineScene} from './skyline-compositor.js?v=6.7';
 const section=document.getElementById('jornada'),canvas=document.getElementById('city-canvas');
 const ctx=canvas.getContext('2d',{alpha:true});
 const backdrop=document.createElement('div');backdrop.className='building-backdrop';backdrop.setAttribute('aria-hidden','true');canvas.before(backdrop);
@@ -19,20 +19,17 @@ function visibility(el,amount,offset=18){
   el.style.opacity=amount;el.style.transform=`translate3d(0,${(1-amount)*offset}px,0)`;
   el.style.visibility=amount<.01?'hidden':'visible';el.inert=amount<.7;el.setAttribute('aria-hidden',amount<.2?'true':'false');
 }
-function render(p){
-  progress=p;if(!building)return;
-  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.globalAlpha=1;ctx.clearRect(0,0,width,height);ctx.imageSmoothingQuality='high';
+let paintedProgress=-1,canvasDirty=false;
+function render(p,force=false){
+  progress=p;if(!building||(!force&&p===paintedProgress))return;
+  paintedProgress=p;
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.globalAlpha=1;if(p<.71||canvasDirty)ctx.clearRect(0,0,width,height);ctx.imageSmoothingQuality='high';canvasDirty=p<.71;
   const transition=smooth(segment(p,.655,.71));
   backdrop.style.visibility=transition<1?'visible':'hidden';backdrop.style.transform=`translate3d(0,${-transition*height*.12}px,0)`;
   let metrics;
   if(transition<1){ctx.save();ctx.translate(0,-transition*height*.12);metrics=building.render(ctx,width,height,p);ctx.restore();}
-  let city;
-  if(transition>0){
-    ctx.save();ctx.beginPath();ctx.rect(0,height*(1-transition),width,height*transition+1);ctx.clip();
-    if(skyline)city=skyline.render(ctx,width,height,segment(p,.705,.965));
-    else {ctx.fillStyle='#103d54';ctx.fillRect(0,0,width,height);}
-    ctx.restore();
-  }
+  // The photographic skyline uses composited layers, not full-screen Canvas redraws.
+  const city=skyline?.render(width,height,segment(p,.705,.965),transition);
   const ranges={roof:1-smooth(segment(p,.065,.115)),descent:smooth(segment(p,.17,.20))*(1-smooth(segment(p,.325,.355))),welcome:smooth(segment(p,.568,.59))*(1-smooth(segment(p,.635,.66))),city:smooth(segment(p,.735,.765))};
   copy.forEach(el=>visibility(el,ranges[el.dataset.sceneCopy]));
   facts.forEach((el,i)=>visibility(el,smooth(segment(p,.80+i*.075,.835+i*.075))));
@@ -51,13 +48,13 @@ function measure(){
   dpr=Math.min(devicePixelRatio,width<700?1.5:2,Math.max(1,Math.sqrt(5000000/(width*height))));
   const nextWidth=Math.round(width*dpr),nextHeight=Math.round(height*dpr);
   if(canvas.width!==nextWidth||canvas.height!==nextHeight){canvas.width=nextWidth;canvas.height=nextHeight;}
-  render(progress);
+  render(progress,true);
 }
 function syncMotion(){
   scrub?.kill();trigger?.kill();scrub=trigger=null;
   const oldHeight=section.offsetHeight,oldY=scrollY,top=section.getBoundingClientRect().top+oldY;
   const below=oldY>top+oldHeight-innerHeight;
-  const off=motionOff()||!building||!window.ScrollTrigger;
+  const off=motionOff()||!building||!skyline||!window.ScrollTrigger;
   section.classList.toggle('is-static',off);measure();
   if(below)scrollTo({top:oldY+section.offsetHeight-oldHeight,behavior:'instant'});
   else if(off&&oldY>top)scrollTo({top:Math.max(0,top-80),behavior:'instant'});
@@ -67,12 +64,12 @@ function syncMotion(){
   trigger=scrub.scrollTrigger;trigger.refresh();
 }
 try{
-  const [facade,elevator,person,city,cabin,entrance,cityScene]=await Promise.all([load('assets/tower-coast-v65.webp'),load('assets/elevator-frames.webp'),load('assets/mozart-atlas-v65.webp'),Promise.resolve(null),load('assets/cabin-coast-v6.webp'),load('assets/entrance-detail-v65.webp'),createSkylineScene().catch(()=>null)]);
+  const [facade,elevator,person,city,cabin,entrance,cityScene]=await Promise.all([load('assets/tower-coast-v65.webp'),load('assets/motion/elevator-interior.webp'),load('assets/motion/mozart-pose.webp'),Promise.resolve(null),load('assets/motion/elevator-car.webp'),load('assets/entrance-detail-v65.webp'),createSkylineScene(canvas).catch(()=>null)]);
   plates={facade,elevator,person,city,cabin,entrance};building=createBuildingScene(plates,backdrop);skyline=cityScene;section.classList.add('ready');syncMotion();
 }catch(error){section.classList.add('is-static','failed');console.warn('A cena estática permanece disponível.',error);}
 new ResizeObserver(measure).observe(canvas);
 document.addEventListener('mozart:motionchange',syncMotion);
-document.addEventListener('mozart:languagechange',()=>{render(progress);requestAnimationFrame(()=>trigger?.refresh());});
+document.addEventListener('mozart:languagechange',()=>{render(progress,true);requestAnimationFrame(()=>trigger?.refresh());});
 compact.addEventListener('change',syncMotion);document.fonts.ready.then(()=>trigger?.refresh());
 addEventListener('pagehide',e=>{if(!e.persisted){scrub?.kill();trigger?.kill();}});
 addEventListener('pageshow',e=>{if(e.persisted)syncMotion();});

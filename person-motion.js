@@ -19,7 +19,7 @@ function triangle(ctx, image, s, d, alpha) {
 }
 export function createPersonMotion(atlas) {
   const source=document.createElement('canvas');source.width=240;source.height=620;
-  const sc=source.getContext('2d',{willReadFrequently:true});sc.drawImage(atlas,673,630,231,592,0,0,240,620);
+  const sc=source.getContext('2d',{willReadFrequently:true});sc.drawImage(atlas,0,0,atlas.width,atlas.height,0,0,240,620);
   const pixels=sc.getImageData(0,0,240,620).data;
   let minX=240,minY=620,maxX=0,maxY=0;
   for(let y=0;y<620;y++)for(let x=0;x<240;x++)if(pixels[(y*240+x)*4+3]>100){minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);}

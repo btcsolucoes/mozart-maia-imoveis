@@ -1,4 +1,4 @@
-import {createPersonMotion} from './person-motion.js?v=6.6';
+import {createPersonMotion} from './person-motion.js?v=6.7';
 const clamp=x=>Math.max(0,Math.min(1,x));
 const range=(p,a,b)=>clamp((p-a)/(b-a));
 const ease=x=>x*x*(3-2*x);
@@ -7,14 +7,9 @@ function travel(t){const a=.16;if(t<a)return t*t/(2*a*(1-a));if(t>1-a)return 1-(
 
 export function createBuildingScene(plates,backdrop){
   const {facade,entrance,elevator,person,cabin}=plates;
-  const iw=facade.width,ih=facade.height,fw=elevator.width/2,fh=elevator.height;
-  // Color treatments are prepared once, never as full-frame filters while scrolling.
-  function prepared(image,sx,sy,sw,sh,width,height,filter){
-    const layer=document.createElement('canvas');layer.width=width;layer.height=height;
-    const paint=layer.getContext('2d');paint.filter=filter;paint.drawImage(image,sx,sy,sw,sh,0,0,width,height);return layer;
-  }
-  const car=prepared(cabin,80,120,790,1420,240,460,'brightness(.76) saturate(.75)');
-  const interior=prepared(elevator,fw+fw*.406,fh*.167,fw*.247,fh*.635,400,880,'saturate(.58) brightness(.72)');
+  const iw=facade.width,ih=facade.height;
+  // Crops and color treatments are prepared at publication time.
+  const car=cabin,interior=elevator;
   const paintPerson=createPersonMotion(person);
   // Landmarks in one coastal building: the guide rails end behind its entrance canopy.
   const opening={x:649,y:1286,w:39,h:86};

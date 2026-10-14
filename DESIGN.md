@@ -241,3 +241,10 @@ O estado inicial respeita `prefers-reduced-motion`; a mudança manual emite `moz
 - **Don't** replique a paleta verde da revisão 5 ou fontes substituídas como regras atuais.
 
 Não canonizado: seletores e aliases históricos ainda existentes no CSS, a diferença de borda entre o token básico e o ajuste costeiro, e limitações da articulação 2D. Não foram reparados neste passe documental; o build é a evidência, e ajustes de qualidade visual exigem revisão própria.
+
+
+## Renderização 6.7
+
+O desenho e a ordem das cenas permanecem. O horizonte usa 21 imagens com transparência preparadas na publicação; a subida usa uma view timeline CSS com inset zero, quando suportada, e transformações JavaScript como alternativa. A revelação da cidade usa duas translações opostas, preservando o cenário fixo atrás de uma abertura vertical. Falhas ao carregar o horizonte mantêm a apresentação inicial estática.
+
+Nos celulares até 760px, as fotos continuam movendo-se com a rolagem, mas sem a máscara animada e o brilho com mistura de camadas. Os recortes da cabine, interior e personagem já contêm o enquadramento utilizado. A altura visível é atualizada depois de 180ms de estabilidade para evitar repetidas alocações durante o movimento das barras do navegador. A sequência segue reversível e o controle de reduzir movimento mantém a mesma função.
