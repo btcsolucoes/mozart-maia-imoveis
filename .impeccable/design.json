@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-13T16:57:57.561025+00:00",
+  "generatedAt": "2026-10-14T00:00:00Z",
   "title": "Design System: Mozart Maia — Orla Atlântica",
   "extensions": {
     "colorMeta": {
@@ -327,9 +327,9 @@
     {
       "name": "Seletor de idioma",
       "kind": "nav",
-      "description": "Cápsula flutuante no canto inferior esquerdo, bandeiras e siglas com aria-pressed.",
-      "html": "<div class=\"ds-languages\" role=\"group\" aria-label=\"Idioma\"><button type=\"button\" aria-label=\"Português\" aria-pressed=\"true\"><img src=\"assets/flags/br.svg\" alt=\"\" width=\"20\" height=\"15\" />PT</button><button type=\"button\" aria-label=\"English\" aria-pressed=\"false\"><img src=\"assets/flags/us.svg\" alt=\"\" width=\"20\" height=\"15\" />EN</button><button type=\"button\" aria-label=\"Español\" aria-pressed=\"false\"><img src=\"assets/flags/es.svg\" alt=\"\" width=\"20\" height=\"15\" />ES</button></div>",
-      "css": ".ds-languages{display:inline-flex;gap:0;padding:3px;background:rgba(11,34,45,.88);border:1px solid #ffffff30;border-radius:999px}.ds-languages button{display:flex;align-items:center;justify-content:center;gap:6px;min-width:64px;min-height:44px;padding:9px;border:0;border-radius:999px;color:#edf5f8;background:transparent;font:600 11px/1 var(--sans,\"Source Sans 3\",sans-serif)}.ds-languages img{width:20px;height:15px;border-radius:2px}.ds-languages button[aria-pressed=true]{background:#ffffff20}.ds-languages button:hover{background:#ffffff30}.ds-languages button:focus-visible{outline:3px solid #b9e5d4;outline-offset:5px}"
+      "description": "Bandeiras circulares flutuantes de 28px, sem fundo ou siglas, com alvos de 44px e aria-pressed.",
+      "html": "<div class=\"ds-languages\" role=\"group\" aria-label=\"Idioma\"><button type=\"button\" aria-label=\"Português\" aria-pressed=\"true\"><img src=\"assets/flags/br.svg\" alt=\"\" width=\"28\" height=\"28\" /></button><button type=\"button\" aria-label=\"English\" aria-pressed=\"false\"><img src=\"assets/flags/us.svg\" alt=\"\" width=\"28\" height=\"28\" /></button><button type=\"button\" aria-label=\"Español\" aria-pressed=\"false\"><img src=\"assets/flags/es.svg\" alt=\"\" width=\"28\" height=\"28\" /></button></div>",
+      "css": ".ds-languages{display:inline-flex;background:transparent;gap:0}.ds-languages button{display:flex;align-items:center;justify-content:center;width:44px;height:44px;padding:8px;border:0;background:transparent}.ds-languages img{width:28px;height:28px;border-radius:50%;object-fit:cover}.ds-languages button:not([aria-pressed=true]) img{opacity:.72}.ds-languages button[aria-pressed=true] img{outline:1px solid #ffffffb3;outline-offset:2px}.ds-languages button:focus-visible{outline:3px solid #b9e5d4;outline-offset:5px}"
     },
     {
       "name": "Dúvida expansível",

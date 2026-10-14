@@ -128,3 +128,21 @@ const journeyObserver = new IntersectionObserver(([entry]) => {
   root.classList.toggle("in-journey", active);
 }, {rootMargin: "-100px 0px 0px 0px", threshold: 0});
 journeyObserver.observe(journey);
+
+// Follow the visible viewport, including mobile browser toolbars, without polling.
+let viewportFrame=0;
+function syncVisibleViewport(){
+  cancelAnimationFrame(viewportFrame);
+  viewportFrame=requestAnimationFrame(()=>{
+    const viewport=window.visualViewport;
+    if(viewport && viewport.scale!==1)return;
+    const visibleHeight=Math.round(viewport?.height||innerHeight);
+    const keyboard=!!document.activeElement?.matches('input,textarea') && visibleHeight<innerHeight*.8;
+    if(keyboard)return;
+    root.style.setProperty('--scene-height',visibleHeight+'px');
+    root.style.setProperty('--viewport-bottom',Math.max(0,innerHeight-visibleHeight-(viewport?.offsetTop||0))+'px');
+  });
+}
+window.visualViewport?.addEventListener('resize',syncVisibleViewport,{passive:true});
+window.addEventListener('resize',syncVisibleViewport,{passive:true});
+syncVisibleViewport();

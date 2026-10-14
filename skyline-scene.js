@@ -96,20 +96,42 @@ export async function createSkylineScene() {
   const layers = facades.map(facade => makeFacade(photo, facade));
   const foreground = makeForeground(photo);
   const panelHeight = photo.naturalHeight / 2;
+  const sample=document.createElement('canvas');sample.width=16;sample.height=1;
+  const sampleContext=sample.getContext('2d',{willReadFrequently:true});
+  sampleContext.drawImage(photo,0,panelHeight+5,photo.naturalWidth,12,0,0,16,1);
+  const skyColors=sampleContext.getImageData(0,0,16,1).data;
+  const basePlate=document.createElement('canvas');basePlate.width=DESIGN_WIDTH;basePlate.height=DESIGN_HEIGHT;
+  const baseContext=basePlate.getContext('2d');
+  baseContext.drawImage(photo,0,panelHeight+3,photo.naturalWidth,panelHeight-3,0,0,DESIGN_WIDTH,DESIGN_HEIGHT);
+  const fade=baseContext.createLinearGradient(0,0,0,28);fade.addColorStop(0,'transparent');fade.addColorStop(1,'black');
+  baseContext.globalCompositeOperation='destination-in';baseContext.fillStyle=fade;baseContext.fillRect(0,0,DESIGN_WIDTH,DESIGN_HEIGHT);
 
   function render(context, width, height, rawProgress) {
     const progress = clamp(rawProgress);
-    const scale = Math.max(width / DESIGN_WIDTH, height / DESIGN_HEIGHT);
+    const scale = width >= 900 ? width / DESIGN_WIDTH : Math.max(width / DESIGN_WIDTH, height / (DESIGN_HEIGHT * 1.15));
     // The camera stays fixed while architecture rises. Portrait crops retain the
     // central towers without stretching their perspective or facade proportions.
     const focal = width < 700 ? .47 : .5;
     const x = (width - DESIGN_WIDTH * scale) * focal;
-    const y = (height - DESIGN_HEIGHT * scale) * .48;
+    const y = height * .73 - AVENUE * scale;
+    // Extend only sky/water beyond the photographic panel, preserving building scale.
+    const horizon=y+DESIGN_HEIGHT*scale;
+    if(y+28*scale>0){
+      const sky=context.createLinearGradient(x,0,x+DESIGN_WIDTH*scale,0);
+      for(let i=0;i<16;i++)sky.addColorStop(i/15,`rgb(${skyColors[i*4]},${skyColors[i*4+1]},${skyColors[i*4+2]})`);
+      context.fillStyle=sky;context.fillRect(0,0,width,y+28*scale+2);
+    }
+    if(horizon<height){
+      const extension=height-horizon+1;
+      context.save();context.translate(0,horizon*2);context.scale(1,-1);
+      context.drawImage(photo,0,photo.naturalHeight-extension/scale,photo.naturalWidth,extension/scale,x,horizon-extension,DESIGN_WIDTH*scale,extension+1);
+      context.restore();
+    }
     const heights = [];
     context.save();
     context.translate(x, y);
     context.scale(scale, scale);
-    context.drawImage(photo, 0, panelHeight, photo.naturalWidth, panelHeight, 0, 0, DESIGN_WIDTH, DESIGN_HEIGHT);
+    context.drawImage(basePlate,0,0,DESIGN_WIDTH,DESIGN_HEIGHT);
     context.save();
     context.beginPath();
     context.rect(0, 0, DESIGN_WIDTH, AVENUE + 1);

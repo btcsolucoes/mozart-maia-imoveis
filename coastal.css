@@ -139,3 +139,28 @@ section,#conteudo,#experiencia{scroll-margin-top:0}
 .motion-off .site-header,.motion-off .language-switch button,.motion-off .whatsapp-float{transition:none}
 html:not(.js) .site-header{position:relative;height:auto;flex-wrap:wrap}
 @media(max-width:700px) and (max-height:700px){.cinematic-copy[data-scene-copy=welcome]{top:80px}}
+
+/* Flag-only controls: 28px visuals and separate 44px touch targets. */
+.language-switch{gap:0;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.language-switch button,.language-switch button[aria-pressed=true],.language-switch button:hover{width:44px;min-width:44px;height:44px;padding:8px;background:transparent;border:0;color:inherit}
+.language-switch img{width:28px;height:28px;border-radius:50%;object-fit:cover;box-shadow:0 1px 5px #00000030;transition:opacity 160ms ease}
+.language-switch button:not([aria-pressed=true]) img{opacity:.72}
+.language-switch button:hover img,.language-switch button:focus-visible img{opacity:1}
+.language-switch button[aria-pressed=true] img{outline:1px solid #ffffffb3;outline-offset:2px}
+.cinematic-sticky,.cinematic.is-static .cinematic-sticky{height:var(--scene-height,100svh);min-height:0;background-image:url('assets/tower-coast-v65.webp')}
+@media(max-width:700px){
+ .js .cinematic:not(.is-static){height:490svh}
+ .cinematic-copy[data-scene-copy=roof],.cinematic-copy[data-scene-copy=city]{top:90px}
+ .city-facts{bottom:90px}
+ .city-fact p{line-height:1.4}
+}
+@media(max-width:700px) and (max-height:700px){.city-facts{gap:14px}.city-fact h3{font-size:21px}.city-fact p{font-size:12px}.cinematic-copy[data-scene-copy=city] h2{font-size:28px}.cinematic-copy[data-scene-copy=welcome]{top:80px}}
+@media(prefers-reduced-transparency:reduce){.language-switch{background:transparent}}
+
+.language-switch,.whatsapp-float{bottom:calc(var(--float-edge) + env(safe-area-inset-bottom) + var(--viewport-bottom,0px))}
+
+.building-backdrop{position:absolute;inset:0;pointer-events:none;z-index:0}
+.building-world{position:absolute;inset:0;transform-origin:0 0;will-change:transform;pointer-events:none}
+#city-canvas{z-index:1}.cinematic-shading{z-index:2}.cinematic-copy,.city-facts,.lift-indicator{z-index:3}
+
+.cinematic-sticky{max-width:calc(var(--scene-height,100svh)*2.32);margin-inline:auto}

@@ -1,6 +1,5 @@
 // Continuous articulation of one photographic cutout. No frame-index jumps or ghosted limbs.
 // This remains an illustrated performance, not a filmed performance of Mozart.
-const rows = [0,.16,.25,.38,.51,.62,.78,.92,1];
 function triangle(ctx, image, s, d, alpha) {
   const [a,b,c]=s, [u,v,w]=d;
   const det=(b[0]-a[0])*(c[1]-a[1])-(c[0]-a[0])*(b[1]-a[1]);
@@ -25,7 +24,7 @@ export function createPersonMotion(atlas) {
   let minX=240,minY=620,maxX=0,maxY=0;
   for(let y=0;y<620;y++)for(let x=0;x<240;x++)if(pixels[(y*240+x)*4+3]>100){minX=Math.min(minX,x);maxX=Math.max(maxX,x);minY=Math.min(minY,y);maxY=Math.max(maxY,y);}
   const frame=document.createElement('canvas');frame.width=240;frame.height=620;
-  const fc=frame.getContext('2d',{willReadFrequently:true});fc.drawImage(source,minX,minY,maxX-minX+1,maxY-minY+1,0,0,240,620);
+  const fc=frame.getContext('2d',{willReadFrequently:true});fc.filter='saturate(.88) brightness(.92)';fc.drawImage(source,minX,minY,maxX-minX+1,maxY-minY+1,0,0,240,620);
   const alpha=fc.getImageData(0,0,240,620).data;
   // Locate each sole in the actual alpha image, not at an assumed body baseline.
   const soles=[0,1].map(side=>{
@@ -34,8 +33,8 @@ export function createPersonMotion(atlas) {
     for(let y=bottom-2;y<=bottom;y++)for(let x=side*120;x<(side+1)*120;x++)if(alpha[(y*240+x)*4+3]>160){sum+=x;count++;}
     return{x:(sum/count)/240,y:(bottom+1)/620};
   });
-  const meshRows=[...new Set([...rows,soles[0].y,soles[1].y])].sort((a,b)=>a-b);
-  const columns=[0,soles[0].x,.495,.505,soles[1].x,1];
+  const meshRows=[.62,.78,.90,1];
+  const columns=[0,.5,.5,1];
   const rest=meshRows.flatMap(y=>columns.map(x=>[x,y]));
   const ratio=(maxX-minX+1)/(maxY-minY+1);
   const buffer=document.createElement('canvas');buffer.width=240;buffer.height=800;
@@ -52,18 +51,18 @@ export function createPersonMotion(atlas) {
       const ground=sy+(ey-sy)*step,px=sx+(ex-sx)*step;
       return{x:px,ground,lift,dx:(px-(x+(sole.x-.5)*width))/width,dy:(ground-lift-(foot+(sole.y-1)*height))/height};
     });
-    const key=Math.round(walk*720);
+    const key=Math.round(walk*120);
     if(key!==last){
       last=key;b.setTransform(1,0,0,1,0,0);b.clearRect(0,0,240,800);b.scale(240,620);
-      const phase=walk*Math.PI*2,envelope=Math.sin(walk*Math.PI);
       const target=rest.map(([px,py],i)=>{
-        const column=i%columns.length,index=column<3?0:1;
+        const column=i%columns.length,index=column<2?0:1;
         // Below the ankle the entire shoe translates rigidly; only calf/knee bend.
         const leg=Math.max(0,Math.min(1,(py-.62)/.28));
-        const arm=Math.exp(-(((py-.49)/.13)**2));
-        return[px+contacts[index].dx*leg+(px<.5?-1:1)*envelope*arm*.006*Math.sin(phase),py+contacts[index].dy*leg];
+        return[px+contacts[index].dx*leg,py+contacts[index].dy*leg];
       });
-      for(let r=0;r<meshRows.length-1;r++)for(let c=0;c<columns.length-1;c++){
+      // The unchanged torso is one draw; only the two legs need a small mesh.
+      b.drawImage(frame,0,0,240,620*.621,0,0,1,.621);
+      for(let r=0;r<meshRows.length-1;r++)for(const c of [0,2]){
         const stride=columns.length,n=r*stride+c;
         for(const ids of [[n,n+1,n+stride],[n+1,n+stride+1,n+stride]])triangle(b,frame,ids.map(i=>rest[i]),ids.map(i=>target[i]),1);
       }
@@ -73,6 +72,6 @@ export function createPersonMotion(atlas) {
       ctx.save();ctx.translate(contact.x,contact.ground);ctx.scale(height*(.045+liftRatio*.022),height*(.006+liftRatio*.009));
       const shade=ctx.createRadialGradient(0,0,0,0,0,1);shade.addColorStop(0,`rgba(7,15,19,${.68-liftRatio*.38})`);shade.addColorStop(.45,`rgba(7,15,19,${.4-liftRatio*.24})`);shade.addColorStop(1,'rgba(7,15,19,0)');ctx.fillStyle=shade;ctx.fillRect(-1,-1,2,2);ctx.restore();
     });
-    ctx.save();ctx.filter='saturate(.88) brightness(.92)';ctx.drawImage(buffer,x-width/2,foot-height,width,height*800/620);ctx.restore();
+    ctx.save();ctx.drawImage(buffer,x-width/2,foot-height,width,height*800/620);ctx.restore();
   };
 }

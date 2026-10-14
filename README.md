@@ -8,7 +8,7 @@ A identidade usa azul oceânico, branco e verde-água, com Manrope nos títulos 
 
 A fachada e a entrada pertencem à mesma composição arquitetônica. Uma aproximação gerada com essa imagem como referência fornece mais detalhe quando ocupa todo o enquadramento. É uma troca de nível de detalhe registrada pela porta, não uma reconstrução 3D ou filmagem. A cabine possui estrutura externa, reflexos e oclusão pelos trilhos. O personagem articula uma única pose fotográfica com alpha ajustado aos pés, evitando dissolvências entre braços e rostos diferentes; o movimento continua estilizado.
 
-O conteúdo inclui fotografias com movimento de câmera, revelação do retrato, progressão das etapas de atendimento e um panorama de Recife. O WhatsApp flutua no canto inferior direito; PT/EN/ES ficam em uma cápsula no canto inferior esquerdo, com bandeiras de Brasil, Estados Unidos e Espanha. A abertura ocupa todo o viewport e mantém somente marca compacta e menu sobre a imagem. Ao sair da sequência, o cabeçalho recupera o fundo sólido. Serviços, formação, registros, endereço, redes sociais e perguntas frequentes permanecem disponíveis fora da sequência animada.
+O conteúdo inclui fotografias com movimento de câmera, revelação do retrato, progressão das etapas de atendimento e um panorama de Recife. O WhatsApp flutua no canto inferior direito; os idiomas ficam no canto inferior esquerdo, apenas com bandeiras circulares de Brasil, Estados Unidos e Espanha, sem cápsula ou siglas visíveis. A abertura ocupa todo o viewport e mantém somente marca compacta e menu sobre a imagem. Ao sair da sequência, o cabeçalho recupera o fundo sólido. Serviços, formação, registros, endereço, redes sociais e perguntas frequentes permanecem disponíveis fora da sequência animada.
 
 ## Executar localmente
 
@@ -57,7 +57,7 @@ Telefone principal: (81) 99971-2940; secundário: (81) 99965-2940. Endereço: Av
 
 A fotografia aérea de Recife é de [Arne Müseler](https://www.arne-mueseler.com/), disponível no [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Recife_aerial_view.jpg), sob [CC BY-SA 3.0 DE](https://creativecommons.org/licenses/by-sa/3.0/de/). Recebe recorte, redimensionamento e sobreposição de cor; preserve atribuição e licença.
 
-O retrato vem do site original de Mozart. O solicitante autorizou a representação estilizada baseada nessa foto. Os demais cenários e o personagem são ilustrações produzidas para o projeto, não imóveis anunciados nem filmagem real. A imagem de interior tem legenda explícita. Proveniência: `assets/coastal-v6-provenance.md`, `assets/interior-v6-provenance.md`, registros históricos e sidecars `.webp.json`; o atlas PNG contém a origem em metadados.
+O retrato vem do site original de Mozart. O solicitante autorizou a representação estilizada baseada nessa foto. Os demais cenários e o personagem são ilustrações produzidas para o projeto, não imóveis anunciados nem filmagem real. A imagem de interior tem legenda explícita. Proveniência: `assets/v66-provenance.md`, `assets/coastal-v6-provenance.md`, `assets/interior-v6-provenance.md`, registros históricos e sidecars `.webp.json`; o atlas PNG contém a origem em metadados.
 
 Manrope e Source Sans 3 usam SIL Open Font License; licenças em `assets/manrope-OFL.txt` e `assets/source-sans-OFL.txt`. As licenças das fontes históricas também são preservadas. Bandeiras SVG de [flag-icons](https://github.com/lipis/flag-icons) usam MIT (`assets/flags/LICENSE.txt`). Ícones Tabler locais usam MIT (`assets/icons/LICENSE.txt`). GSAP mantém seus cabeçalhos e [termos de licença](https://gsap.com/standard-license).
 
@@ -74,3 +74,12 @@ Manrope e Source Sans 3 usam SIL Open Font License; licenças em `assets/manrope
 ## Publicação
 
 GitHub Pages publica a raiz da branch `main` após o push, sem build de aplicação. `.nojekyll` mantém a publicação estática. Nas alterações, validar também os caminhos relativos na subpasta pública e a recuperação de histórico/bfcache. O uso de imagens e articulação 2D não permite prometer realismo de filmagem.
+
+## Ajustes 6.6 — enquadramento e desempenho
+
+- Bandeiras de 28px, alvos de toque de 44px e nomes acessíveis. WhatsApp separado no canto inferior direito.
+- Altura da cena acompanha o viewport visível; percurso móvel reduzido de 640svh para 490svh. O palco limita a proporção a 2,32:1 em telas ultralargas; o horizonte usa a largura inteira no desktop.
+- Novo detalhe fotográfico da entrada, aproximação menos agressiva e fotografias compostas pelo navegador. Canvas transparente cuida de cabine/personagem; filtros são preparados uma vez e a articulação usa 12 triângulos nas pernas.
+- Atlas e fachada em WebP otimizado; fontes locais WOFF2 com subconjuntos Latin e Latin Extended.
+- Conferência em 320×568, 390×844, 768×900, 1440×900, 1920×1080 e 2560×1080 nos três idiomas: sem overflow horizontal, controles dentro da tela, texto acima dos controles, 21 edifícios completos. Alternância de movimento: 0/25 triggers, sem duplicação de fundo. Viewport 390×650: palco de 650px e controles dentro da tela.
+- Medição de laboratório em Chrome, viewport móvel 390×844, DPR 3, CPU 4×, rede sem limitação: cenário de 100 passos de rolagem. Mediana dos intervalos de quadros de 33,3ms para 21,4ms; p95 de 141,4ms para 56,1ms. Recursos carregados no cenário de aproximadamente 5,23MB para 2,91MB (decodedBodySize). Esses números são de emulação local, não de aparelhos físicos ou visitantes reais.

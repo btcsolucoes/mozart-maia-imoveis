@@ -111,7 +111,7 @@ A identidade aproxima o visitante da corretagem em Recife por meio da orla, da a
 
 O movimento segue a posição da rolagem: aproximação da fachada, descida da cabine, chegada, abertura da porta, representação de Mozart e crescimento do horizonte. Nas seções seguintes, fotografias mudam de enquadramento, o retrato se revela e uma linha acompanha o processo de atendimento. Texto e contato continuam disponíveis na apresentação estática.
 
-Este registro substitui a direção da revisão 5 por autorização de mudança visual e descreve o código da revisão 6.3. A ordem efetiva das folhas é estilos básicos, abertura, movimento de conteúdo e ajustes costeiros. O contrato está em `../work/v6-direction.md`; os fatos duráveis permanecem em `PRODUCT.md`. Os tokens acima refletem o resultado dessa cascata.
+Este registro substitui a direção da revisão 5 por autorização de mudança visual e descreve o código da revisão 6.6. A ordem efetiva das folhas é estilos básicos, abertura, movimento de conteúdo e ajustes costeiros. O contrato está em `../work/v6-direction.md`; os fatos duráveis permanecem em `PRODUCT.md`. Os tokens acima refletem o resultado dessa cascata.
 
 **Key Characteristics:**
 - Azul oceânico contínuo com contraste claro e ações verde-água.
@@ -157,7 +157,7 @@ A geometria aberta de Manrope sustenta títulos amplos sem ornamentação; Sourc
 - **Headline:** título dos serviços, conforme o token headline; perfil e processo usam variações contextuais de `clamp(40px, 4.5vw, 64px)` e `clamp(40px, 4.7vw, 66px)`. O panorama usa `clamp(40px, 5.6vw, 80px)` com entrelinha 1.05.
 - **Title:** títulos de compra, venda e avaliação; no celular passam a 34px. Títulos do processo usam 26px.
 - **Body:** texto principal conforme o token body, limitado globalmente a 68ch. Introduções podem usar 20–22px; os textos de serviços têm largura de 43ch no desktop.
-- **Label:** rótulos de formulário e legenda do assunto conforme o token label; navegação usa 16px e controles de idioma 11px. Informações auxiliares usam 13–16px conforme a função.
+- **Label:** rótulos de formulário e legenda do assunto conforme o token label; navegação usa 16px e controles de idioma usam somente bandeiras. Informações auxiliares usam 13–16px conforme a função.
 
 **The Reading First Rule.** Preserve o corpo de leitura e a área de interação durante animações; a ênfase recai sobre enquadramento, títulos e decoração.
 
@@ -169,9 +169,9 @@ Aos 1000px, a introdução dos serviços passa a uma coluna. Aos 760px, fotograf
 
 O cabeçalho é fixo, com 72px no desktop e 64px até 700px. Durante toda a abertura, fica transparente: a marca compacta e o botão de menu ocupam cápsulas discretas nos cantos superiores. A navegação fica recolhida também no desktop durante essa sequência e recupera a disposição usual depois dela. A mudança é reversível ao rolar para cima.
 
-O seletor de idiomas flutua no canto inferior esquerdo em uma cápsula escura, com bandeiras SVG de Brasil, Estados Unidos e Espanha, siglas PT/EN/ES e nomes acessíveis. Cada opção mantém alvo de 44px. O WhatsApp flutua no canto inferior direito em um círculo de 52px. Os controles respeitam as áreas seguras do dispositivo; os textos da abertura e o rodapé reservam espaço inferior.
+O seletor de idiomas flutua no canto inferior esquerdo com bandeiras SVG circulares de 28px de Brasil, Estados Unidos e Espanha, sem fundo externo ou siglas, e com nomes acessíveis. Cada opção mantém alvo de 44px. O WhatsApp flutua no canto inferior direito em um círculo de 52px. Os controles respeitam as áreas seguras do dispositivo; os textos da abertura e o rodapé reservam espaço inferior.
 
-A abertura usa sticky nativo em tela inteira, com percurso de 620svh e 640svh até 700px. Em viewport de altura até 500px, fica estática. A implementação mantém âncoras, skip link, teclado e conteúdo sem JavaScript.
+A abertura usa sticky nativo em tela inteira, com altura ajustada ao viewport visível, proporção máxima de 2,32:1 e percurso de 620svh e 490svh até 700px. Em viewport de altura até 500px, fica estática. A implementação mantém âncoras, skip link, teclado e conteúdo sem JavaScript.
 
 O README registra verificação em 320, 390, 600, 768, 1100 e 1440px nos três idiomas sem overflow horizontal. Este passe documental não repete essas medições; elas não substituem avaliação visual do movimento.
 
@@ -205,7 +205,7 @@ Campos escuros com borda clara, texto de 18px, altura mínima de 58px e cantos f
 
 ### Navigation
 
-Marca discreta, menu com três âncoras e controle de movimento compõem o cabeçalho. Os idiomas e o WhatsApp são flutuantes independentes. O idioma selecionado recebe um fundo mais claro e `aria-pressed`. O menu fecha com Escape e devolve o foco ao botão, tanto no celular quanto na abertura do desktop.
+Marca discreta, menu com três âncoras e controle de movimento compõem o cabeçalho. Os idiomas e o WhatsApp são flutuantes independentes. O idioma selecionado recebe um contorno fino na bandeira e `aria-pressed`. O menu fecha com Escape e devolve o foco ao botão, tanto no celular quanto na abertura do desktop.
 
 ### Photographic windows and coastal sequence
 
